@@ -1,4 +1,8 @@
+import { hashSenha } from "../Utils/hashSenha.js";
+
 async function cadProf(event) {
+
+    
     event.preventDefault();
 
     const form = document.getElementById("formProf");
@@ -7,7 +11,7 @@ async function cadProf(event) {
         rmProf: Number(document.getElementById("rmProf").value),
         nomeProf: document.getElementById("nomeProf").value.trim(),
         emailProf: document.getElementById("emailProf").value.trim(),
-        senhaProf: document.getElementById("senhaProf").value,
+        senhaProf: await hashSenha(document.getElementById("senhaProf").value),
         tipo: "Professor",
         statusProf: true
     };
