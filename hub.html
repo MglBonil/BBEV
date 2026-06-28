@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BraiamBank</title>
+
+  <link rel="stylesheet" href="CSS/hub.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Fraunces:wght@700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Fraunces', 'serif'],
+          },
+          colors: {
+            navy: { 900: '#0d1b4b', 800: '#122060', 700: '#1a2c7a' },
+            amber: { 400: '#f5a623', 500: '#e8971a' },
+            sidebar: '#0f172a',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="JS/Componentes/cardTurmas.js"></script>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-logo">
+      <img src="assets/icons/LogoVetorizado.svg">
+    </div>
+
+    <a class="nav-item active" href="hub.php">
+      <img src="assets/icons/home.svg"> Inicio
+    </a>
+
+    <a class="nav-item" href="pontos.php">
+      <img src="assets/icons/wallet.svg"> Pontos
+    </a>
+
+    <div class="section-label">Gestão</div>
+
+    <a class="nav-item" href="hub.php">
+      <img src="assets/icons/menu.svg"> Justificativa
+    </a>
+
+    <a class="nav-item" href="#">
+      <img src="assets/icons/archive.svg"> Relatório
+    </a>
+
+    <a class="nav-item" href="#">
+      <img src="assets/icons/add.svg"> Cadastrar
+    </a>
+
+    <div class="sidebar-footer">
+      <a class="nav-item" href="#">
+        <img src="assets/icons/settings.svg"> Sair
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="content">
+      <h1 class="page-heading">Turmas</h1>
+
+      <!-- GRID RESPONSIVO -->
+      <div id="cardsGrid"
+           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a class="bn-item active" href="#">Início</a>
+  <a class="bn-item" href="#">Pontos</a>
+  <a class="bn-item" href="#">Gestão</a>
+  <a class="bn-item" href="#">Cadastrar</a>
+</nav>
+
+<script>
+
+// dados dos cards só um exemplo, para a gente csg trabalhar melhor, se mecher aqui pf n apague apenas transforme em comentário
+const turmas = [
+  {
+    nome: "Turma A",
+    descricao: "Focada em aulas de TCC",
+    gradiente: "bg-gradient-to-r from-blue-500 to-blue-600",
+    botao: "bg-blue-500",
+    sombra: "shadow-blue-500/30",
+    onClick: () => alert("Turma A")
+  },
+  {
+    nome: "Turma B",
+    descricao: "Focada em PW3",
+    gradiente: "bg-gradient-to-r from-blue-900 to-blue-700",
+    botao: "bg-blue-900",
+    sombra: "shadow-blue-900/30",
+    onClick: () => alert("Turma B")
+  },
+  {
+    nome: "Turma C",
+    descricao: "Focada em Mobile",
+    gradiente: "bg-gradient-to-r from-yellow-400 to-amber-300",
+    botao: "bg-amber-400",
+    sombra: "shadow-amber-400/30",
+    onClick: () => alert("Turma C")
+  },
+  {
+    nome: "Turma D",
+    descricao: "Ciências avançadas",
+    gradiente: "bg-gradient-to-r from-yellow-500 to-amber-400",
+    botao: "bg-amber-500",
+    sombra: "shadow-amber-500/30",
+    onClick: () => window.location.href = "pontos.php"
+  }
+];
+
+// cria os cards dinamicamente e adiciona ao grid
+const grid = document.getElementById("cardsGrid");
+
+turmas.forEach(turma => {
+  grid.appendChild(criarCardTurma(turma));
+});
+</script>
+<script src="JS/Componentes/cardTurmas.js"></script>
+</body>
+</html>

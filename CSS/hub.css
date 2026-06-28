@@ -16,69 +16,141 @@
     /* ══════════════════════════════
        SIDEBAR — desktop full
     ══════════════════════════════ */
+       body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      min-height: 100vh;
+    }
+
     .sidebar {
-      width: 220px;
-      flex-shrink: 0;
+      width: 260px;
+      min-width: 260px;
+      height: 100vh;
       background: #ffffff;
-      border-right: 1px solid #e8ecf0;
+      border-right: 1px solid #e5e7eb;
       display: flex;
       flex-direction: column;
-      padding: 28px 16px;
-      gap: 28px;
+      padding: 20px 12px;
       position: sticky;
       top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      transition: width 0.25s ease, padding 0.25s ease;
-      z-index: 20;
     }
 
-    .brand {
-      font-family: 'Fraunces', serif;
-      font-weight: 900;
-      font-size: 1.15rem;
-      color: #0d1b4b;
-      letter-spacing: -0.5px;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-
-    .nav-section { display: flex; flex-direction: column; gap: 2px; }
-
-    .nav-label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: #94a3b8;
-      padding: 0 10px;
-      margin-bottom: 6px;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-
-    .nav-item {
+    /* Logo */
+    .sidebar-logo {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 9px 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #475569;
-      transition: background 0.18s, color 0.18s;
-      text-decoration: none;
-      user-select: none;
-      white-space: nowrap;
-      overflow: hidden;
+      width: 50px;
+      height: 50px;
+      padding: 0 8px 12px;
     }
-    .nav-item:hover { background: #f1f5f9; color: #0d1b4b; }
-    .nav-item.active { background: #eef2ff; color: #0d1b4b; font-weight: 600; }
-    .nav-item svg { width: 17px; height: 17px; flex-shrink: 0; opacity: 0.7; }
-    .nav-item.active svg { opacity: 1; }
-    .nav-text { transition: opacity 0.2s; }
 
+    .sidebar-logo svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Nav items */
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #6b7280;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      user-select: none;
+    }
+
+    .nav-item:hover {
+      background: #f9fafb;
+      color: #111827;
+    }
+
+    .nav-item.active {
+      background: #eef2ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+
+    .nav-item i {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 11px;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      padding: 16px 12px 6px;
+    }
+
+    /* Team items */
+    .team-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #6b7280;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .team-item:hover {
+      background: #f9fafb;
+      color: #111827;
+    }
+
+    .team-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: #6b7280;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    /* =====================
+       DEMO CONTENT AREA
+       (remova na sua tela)
+    ===================== */
+    .demo-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    
+
+    
     /* ══════════════════════════════
        SIDEBAR — tablet (icon rail)
     ══════════════════════════════ */
@@ -248,7 +320,8 @@
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 30px;
+      margin-top: 90px;
     }
 
     /* tablet: 2 columns */
@@ -444,3 +517,168 @@
     .main::-webkit-scrollbar { width: 5px; }
     .main::-webkit-scrollbar-track { background: transparent; }
     .main::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 20px;
+      gap: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+ 
+    /* Logo */
+    .nb-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+ 
+    .nb-logo svg {
+      width: 28px;
+      height: 28px;
+    }
+ 
+    /* Search */
+    .nb-search {
+      flex: 1;
+      max-width: 480px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+ 
+    .nb-search i {
+      position: absolute;
+      left: 10px;
+      font-size: 16px;
+      color: #9ca3af;
+      pointer-events: none;
+    }
+ 
+    .nb-search input {
+      width: 100%;
+      height: 36px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      background: #f9fafb;
+      padding: 0 12px 0 34px;
+      font-size: 13.5px;
+      color: #111827;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+      font-family: inherit;
+    }
+ 
+    .nb-search input::placeholder { color: #9ca3af; }
+ 
+    .nb-search input:focus {
+      border-color: #6366f1;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    }
+ 
+    /* Actions */
+    .nb-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+ 
+    /* Icon button */
+    .nb-icon-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      color: #6b7280;
+      position: relative;
+    }
+ 
+    .nb-icon-btn:hover {
+      background: #f3f4f6;
+      border-color: #d1d5db;
+    }
+ 
+    .nb-icon-btn i { font-size: 18px; }
+ 
+    /* Notification badge */
+    .nb-badge {
+      position: absolute;
+      top: 5px;
+      right: 6px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ef4444;
+      border: 1.5px solid #fff;
+    }
+ 
+    /* Avatar */
+    .nb-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid #e5e7eb;
+      transition: border-color 0.15s;
+      flex-shrink: 0;
+    }
+ 
+    .nb-avatar:hover { border-color: #6366f1; }
+    .nb-avatar img { width: 100%; height: 100%; object-fit: cover; }
+ 
+    /* Avatar fallback (iniciais) */
+    .nb-avatar-fallback {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #a78bfa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      border: 2px solid #e5e7eb;
+      transition: border-color 0.15s;
+      flex-shrink: 0;
+    }
+ 
+    .nb-avatar-fallback:hover { border-color: #6366f1; }
+ 
+    /* New Project button */
+    .nb-btn {
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 8px;
+      background: #4f46e5;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: background 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+ 
+    .nb-btn:hover { background: #4338ca; }
+    .nb-btn i { font-size: 15px; }
