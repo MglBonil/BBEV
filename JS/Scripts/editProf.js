@@ -134,6 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
         .getElementById("formProf")
         .addEventListener("submit", editProf);
 
+    document
+        .getElementById("btnExcluir")
+        .addEventListener("click", deleteProf);
+
 });
 
 async function deleteProf(event) {
