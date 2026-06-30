@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Professor</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
+
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-6">
+            Editar Professor
+        </h1>
+
+        <form id="formProf" class="space-y-5">
+
+            <!-- RM -->
+            <div class="relative">
+                <input id="rmProf" type="text" readonly placeholder=" "
+                    class="peer w-full bg-gray-100 border border-gray-300 rounded-lg px-4 pt-5 pb-2">
+                <label class="absolute left-4 top-2 text-gray-500 text-sm">
+                    RM do Professor
+                </label>
+            </div>
+
+            <!-- Nome -->
+            <div class="relative">
+                <input id="nomeProf" type="text" required placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    Nome do Professor
+                </label>
+            </div>
+
+            <!-- Email -->
+            <div class="relative">
+                <input id="emailProf" type="email" required placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    E-mail Institucional
+                </label>
+            </div>
+
+            <!-- Status -->
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" id="statusAtivo" name="statusProf" value="true"
+                    class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+
+                <span>Ativo</span>
+                
+                <input type="radio" id="statusInativo" name="statusProf" value="false"
+                    class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+
+                <span>Inativo</span>
+            </label>
+
+            <!-- Senha -->
+            <div class="relative">
+
+                <input id="senhaProf" type="password" placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    Senha
+                </label>
+
+                <button type="button" onclick="toggleSenha()" class="absolute right-3 top-3">
+
+                    <img id="iconeSenha" src="assets/icons/visibility.svg" class="w-5 h-5">
+
+                </button>
+
+            </div>
+
+            <div class="flex flex-col gap-3">
+
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg">
+
+                    Salvar Alterações
+
+                </button>
+
+                <button type="button"id="btnExcluir"
+                    class="bg-red-600 hover:bg-red-700 text-gray-200 font-semibold py-3 rounded-lg">
+                    Excluir Professor
+                </button>
+
+                <button type="button" onclick="window.location.href='listProf.html'"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script type="module" src="JS/Scripts/editProf.js"></script>
+
+    <script>
+
+        const campo = document.getElementById("senhaProf");
+
+        let valorOriginal = campo.value;
+
+        campo.addEventListener("focus", function () {
+            valorOriginal = this.value; // Salva o valor atual
+            this.value = "";            // Limpa ao clicar
+        });
+
+        campo.addEventListener("blur", function () {
+            if (this.value.trim() === "    ") {
+                this.value = valorOriginal; // Restaura se não digitou nada
+            }
+        });
+
+        function toggleSenha() {
+
+            const senha = document.getElementById("senhaProf");
+            const icone = document.getElementById("iconeSenha");
+
+            if (senha.type === "password") {
+
+                senha.type = "text";
+                icone.src = "assets/icons/visibility_off.svg";
+
+            } else {
+
+                senha.type = "password";
+                icone.src = "assets/icons/visibility.svg";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
