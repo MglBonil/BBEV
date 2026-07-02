@@ -1,7 +1,7 @@
 /**
  * Cria um card de turma.
  *
- * @param {Object} turma
+ * @param {Object} grupo
  * @param {string} turma.nome
  * @param {string} turma.descricao
  * @param {string} turma.gradiente
