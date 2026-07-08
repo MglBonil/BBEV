@@ -1,4 +1,3 @@
-import { hashSenha } from "../Utils/hashSenha.js";
 
 async function carregarProfessor() {
     const params = new URLSearchParams(window.location.search);
@@ -52,7 +51,7 @@ async function editProf(event) {
                 nomeProf: document.getElementById("nomeProf").value.trim(),
                 emailProf: document.getElementById("emailProf").value.trim(),
                 senhaProf: null,
-                tipo: "Professor",
+                tipoProf: "Professor",
                 statusProf: true
             };
         } else {
@@ -61,7 +60,7 @@ async function editProf(event) {
                 nomeProf: document.getElementById("nomeProf").value.trim(),
                 emailProf: document.getElementById("emailProf").value.trim(),
                 senhaProf: null,
-                tipo: "Professor",
+                tipoProf: "Professor",
                 statusProf: false
             };
         }
@@ -72,8 +71,8 @@ async function editProf(event) {
                 rmProf: Number(rm),
                 nomeProf: document.getElementById("nomeProf").value.trim(),
                 emailProf: document.getElementById("emailProf").value.trim(),
-                senhaProf: await hashSenha(document.getElementById("senhaProf").value),
-                tipo: "Professor",
+                senhaProf: document.getElementById("senhaProf").value,
+                tipoProf: "Professor",
                 statusProf: true
 
             };
@@ -82,8 +81,8 @@ async function editProf(event) {
                 rmProf: Number(rm),
                 nomeProf: document.getElementById("nomeProf").value.trim(),
                 emailProf: document.getElementById("emailProf").value.trim(),
-                senhaProf: await hashSenha(document.getElementById("senhaProf").value),
-                tipo: "Professor",
+                senhaProf: document.getElementById("senhaProf").value,
+                tipoProf: "Professor",
                 statusProf: false
             };
         }

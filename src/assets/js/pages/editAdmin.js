@@ -1,4 +1,4 @@
-import { hashSenha } from "../Utils/hashSenha.js";
+
 
 async function carregarAdmin() {
     const params = new URLSearchParams(window.location.search);
@@ -69,7 +69,7 @@ async function editAdmin(event) {
                 idAdm: Number(id),
                 nomeAdm: document.getElementById("nomeAdmin").value.trim(),
                 emailAdm: document.getElementById("emailAdmin").value.trim(),
-                senhaAdm: await hashSenha(document.getElementById("senhaAdmin").value),
+                senhaAdm: document.getElementById("senhaAdmin").value,
                 statusAdm: true
 
             };
@@ -78,7 +78,7 @@ async function editAdmin(event) {
                 idAdm: Number(id),
                 nomeAdm: document.getElementById("nomeAdmin").value.trim(),
                 emailAdm: document.getElementById("emailAdmin").value.trim(),
-                senhaAdm: await hashSenha(document.getElementById("senhaAdmin").value),
+                senhaAdm: document.getElementById("senhaAdmin").value,
                 statusAdm: false
             };
         }

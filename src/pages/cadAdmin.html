@@ -73,7 +73,7 @@
 
                 <button type="button" onclick="toggleSenha()" class="absolute right-3 top-3">
 
-                    <img id="iconeSenha" src="assets/icons/visibility.svg" class="w-5 h-5">
+                    <img id="iconeSenha" src="../assets/icons/visibility.svg" class="w-5 h-5">
 
                 </button>
 
@@ -96,7 +96,7 @@
         </form>
     </div>
 
-    <script type="module" src="JS/Scripts/cadAdmin.js"></script>
+    <script type="module" src="../assets/js/pages/cadAdmin.js"></script>
     <script>
         function toggleSenha() {
             const input = document.getElementById("senhaAdmin");
@@ -107,8 +107,8 @@
             input.type = isPassword ? "text" : "password";
 
             icone.src = isPassword
-                ? "assets/icons/visibility_off.svg"
-                : "assets/icons/visibility.svg";
+                ? "../assets/icons/visibility_off.svg"
+                : "../assets/icons/visibility.svg";
         }
 
         function limpar() {
@@ -116,7 +116,7 @@
 
             // reset estado visual
             document.getElementById("senhaAdmin").type = "password";
-            document.getElementById("iconeSenha").src = "assets/icons/visibility.svg";
+            document.getElementById("iconeSenha").src = "../assets/icons/visibility.svg";
         }
     </script>
 

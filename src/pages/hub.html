@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BraiamBank — Turmas</title>
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Fraunces:wght@700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Fraunces', 'serif'],
+          },
+          colors: {
+            navy: { 900: '#0d1b4b', 800: '#122060', 700: '#1a2c7a' },
+            amber: { 400: '#f5a623', 500: '#e8971a' },
+            sidebar: '#0f172a',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="../assets/js/components/cardTurmas.js"></script>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-logo">
+      <img src="../assets/icons/LogoVetorizado.svg">
+    </div>
+
+    <a class="nav-item active" href="hub.html">
+      <img src="../assets/icons/home.svg"> Inicio
+    </a>
+
+    <a class="nav-item" href="hub.html">
+      <img src="../assets/icons/wallet.svg"> Pontos
+    </a>
+
+    <div class="section-label">Gestão</div>
+
+    <a class="nav-item" href="hub.html">
+      <img src="../assets/icons/menu.svg"> Justificativa
+    </a>
+
+    <a class="nav-item" href="hub.html">
+      <img src="../assets/icons/archive.svg"> Relatório
+    </a>
+
+    <a class="nav-item" href="hub.html">
+      <img src="../assets/icons/add.svg"> Cadastrar
+    </a>
+
+    <div class="sidebar-footer">
+      <a class="nav-item" href="hub.html">
+        <img src="../assets/icons/settings.svg"> Sair
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="content">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="page-heading">Turmas</h1>
+
+        
+      </div>
+
+      <!-- GRID RESPONSIVO -->
+      <div id="cardsGrid"
+           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a class="bn-item active" href="hub.html">Início</a>
+  <a class="bn-item" href="hub.html">Pontos</a>
+  <a class="bn-item" href="hub.html">Gestão</a>
+  <a class="bn-item" href="hub.html">Cadastrar</a>
+</nav>
+
+<script src="../assets/js/pages/hub.js"></script>
+</body>
+</html>

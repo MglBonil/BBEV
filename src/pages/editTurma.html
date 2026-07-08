@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Turma</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
+
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-6">
+            Editar Turma
+        </h1>
+
+        <form id="formTurma" class="space-y-5">
+
+            <!-- ID (somente leitura) -->
+            <div class="relative">
+                <input id="idTurma" type="text" readonly
+                    class="peer w-full bg-gray-100 border border-gray-300 rounded-lg px-4 pt-5 pb-2">
+                <label class="absolute left-4 top-2 text-gray-500 text-sm">
+                    ID da Turma
+                </label>
+            </div>
+
+            <!-- Nome -->
+            <div class="relative">
+                <input id="nomeTurma" type="text" required placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    Nome da Turma
+                </label>
+            </div>
+
+            <!-- Ano -->
+            <div class="relative">
+                <input id="anoTurma" type="text" required placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    Ano da turma (ex.: 2024)
+                </label>
+            </div>
+
+            <!-- Grupo -->
+            <div class="relative">
+                <select id="grupoTurma" required
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <option value="" disabled selected>Selecione o grupo</option>
+                    <option value="B">B</option>
+                    <option value="A">A</option>
+                    <option value="i">Inteiro</option>
+                </select>
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm">
+                    Grupo da turma
+                </label>
+            </div>
+
+            <!-- Curso -->
+            <div class="relative">
+                <input id="cursoTurma" type="text" placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    Curso da turma
+                </label>
+            </div>
+
+            <!-- Periodo -->
+            <div class="relative">
+                <select id="periodoTurma" required
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <option value="" disabled selected>Selecione o período</option>
+                    <option value="Integral">Integral</option>
+                    <option value="Matutino">Matutino</option>
+                    <option value="Noturno">Noturno</option>
+                    <option value="Vespertino">Vespertino</option>
+                </select>
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm">
+                    Período da turma
+                </label>
+            </div>
+
+            <!-- Professor Responsável -->
+            <div class="relative">
+                <select id="codProfessor" required
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <option value="" disabled selected>Selecione o professor</option>
+                </select>
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm">
+                    Professor responsável
+                </label>
+            </div>
+
+            <div class="flex flex-col gap-3">
+
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg">
+                    Salvar Alterações
+                </button>
+
+                <button type="button" id="btnExcluir"
+                   class="bg-red-600 hover:bg-red-700 text-gray-200 font-semibold py-3 rounded-lg">
+                   Excluir Turma
+                </button>
+
+                <button type="button" onclick="window.location.href='hub.html'"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script type="module" src="../assets/js/pages/editTurma.js"></script>
+
+</body>
+
+</html>

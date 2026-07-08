@@ -1,5 +1,28 @@
 # BBEV
 
+Frontend estático (HTML + JS + CSS) que consome a API Spring Boot em `http://localhost:8080`.
+
+## Estrutura
+
+```
+BBEV/
+├── index.html              # Redireciona para as telas
+├── src/
+│   ├── pages/              # Telas HTML (hub, cadTurma, grupo, cadastros, listas, pontos)
+│   └── assets/
+│       ├── css/styles.css  # Estilos compartilhados
+│       ├── js/
+│       │   ├── components/ # Componentes reutilizáveis (cardTurmas, cardGrupos)
+│       │   └── pages/      # Scripts por tela (hub, cadTurma, cadProf, ...)
+│       ├── icons/          # Ícones SVG
+│       └── img/            # Imagens
+```
+
+## Fluxo Turma
+
+- `src/pages/hub.html` lista as turmas via `GET /turma/all` (renderiza cards dinâmicos).
+- `src/pages/cadTurma.html` cadastra uma turma via `POST /turma` (carrega professores de `GET /professor/all`).
+
 # Painel Admin:
 
 Tela Listagem de Professores:

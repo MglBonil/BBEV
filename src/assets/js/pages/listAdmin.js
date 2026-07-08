@@ -23,7 +23,8 @@ async function carregarAdmin() {
             throw new Error("Erro HTTP: " + response.status);
         }
 
-        const admins = await response.json();
+        const pagina = await response.json();
+        const admins = pagina.content || [];
 
         tbody.innerHTML = "";
 

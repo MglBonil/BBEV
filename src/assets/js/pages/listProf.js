@@ -23,7 +23,8 @@ async function carregarProfessores() {
             throw new Error("Erro HTTP: " + response.status);
         }
 
-        const professores = await response.json();
+        const pagina = await response.json();
+        const professores = pagina.content || [];
 
         tbody.innerHTML = "";
 

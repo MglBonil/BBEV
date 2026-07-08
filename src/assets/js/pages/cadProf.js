@@ -1,4 +1,4 @@
-import { hashSenha } from "../Utils/hashSenha.js";
+
 
 async function cadProf(event) {
     event.preventDefault();
@@ -51,8 +51,8 @@ async function cadProf(event) {
         rmProf: Number(rmProf),
         nomeProf: nomeProf,
         emailProf: emailProf,
-        senhaProf: await hashSenha(senhaProf),
-        tipo: "Professor",
+        senhaProf: senhaProf,
+        tipoProf: "Prof",
         statusProf: true
     };
 
