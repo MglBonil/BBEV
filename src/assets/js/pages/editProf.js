@@ -1,5 +1,3 @@
-import { hashSenha } from "../Utils/hashSenha.js";
-
 async function carregarProfessor() {
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
@@ -93,7 +91,7 @@ async function editProf(event) {
             nomeProf: nomeProf,
             emailProf: emailProf,
             senhaProf: null,
-            tipo: "Professor",
+            tipoProf: "Professor",
             statusProf: document.getElementById("statusAtivo").checked
         };
 
@@ -104,8 +102,8 @@ async function editProf(event) {
             rmProf: Number(rm),
             nomeProf: nomeProf,
             emailProf: emailProf,
-            senhaProf: await hashSenha(senhaProf),
-            tipo: "Professor",
+            senhaProf: senhaProf,
+            tipoProf: "Professor",
             statusProf: document.getElementById("statusAtivo").checked
         };
 

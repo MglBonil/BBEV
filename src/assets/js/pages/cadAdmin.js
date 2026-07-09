@@ -1,5 +1,3 @@
-import { hashSenha } from "../Utils/hashSenha.js";
-
 async function cadAdmin(event) {
 
     event.preventDefault();
@@ -53,7 +51,7 @@ async function cadAdmin(event) {
     const novoAdmin = {
         nomeAdm: nomeAdm,
         emailAdm: emailAdm,
-        senhaAdm: await hashSenha(senhaAdm),
+        senhaAdm: senhaAdm,
         statusAdm: true
     };
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .caixa-centro {
+            position: absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="caixa-centro">
+        <h1 class="text-3xl font-bold text-slate-800">Painel Administrativo</h1>
+        <br><br>
+        <button onclick="window.location.href='listProf.html'"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-md">Listar
+            Professores</button>
+
+        <button onclick="window.location.href='cadProf.html'"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-md">Criar
+            Professor</button>
+        <br><br>
+        <button onclick="window.location.href='listAdmin.html'"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-md">Listar
+            Administradores</button>
+
+        <button onclick="window.location.href='cadAdmin.html'"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-md">Criar
+            Administrador</button>
+        <br><br>
+        <button onclick="window.location.href='listTurma.html'"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-md">Listar
+            Turmas</button>
+
+        <button onclick="window.location.href='cadTurma.html'"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-md">Criar
+            Turma</button>
+
+    </div>
+
+</body>
+
+</html>

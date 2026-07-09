@@ -12,7 +12,7 @@ async function carregarProfessores() {
 
     try {
 
-        const response = await fetch("http://localhost:8080/professor/all", {
+        const response = await fetch("http://localhost:8080/professor/all?page=0&size=200", {
             method: "GET",
             headers: {
                 "Accept": "application/json"

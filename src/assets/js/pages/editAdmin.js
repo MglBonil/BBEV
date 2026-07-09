@@ -1,5 +1,3 @@
-import { hashSenha } from "../Utils/hashSenha.js";
-
 async function carregarAdmin() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
@@ -19,6 +17,7 @@ async function carregarAdmin() {
 
         const admin = await response.json();
 
+        document.getElementById("idAdm").value = admin.idAdm;
         document.getElementById("nomeAdmin").value = admin.nomeAdm;
         document.getElementById("emailAdmin").value = admin.emailAdm;
         document.getElementById("statusAtivo").checked = admin.statusAdm;
@@ -84,7 +83,7 @@ async function editAdmin(event) {
         idAdm: Number(id),
         nomeAdm: nomeAdm,
         emailAdm: emailAdm,
-        senhaAdm: senhaAdm === "" ? null : await hashSenha(senhaAdm),
+        senhaAdm: senhaAdm === "" ? null : senhaAdm,
         statusAdm: document.getElementById("statusAtivo").checked
     };
 
