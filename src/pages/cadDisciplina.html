@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Disciplina</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
+
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-6">
+            Cadastro de Disciplina
+        </h1>
+
+        <form id="formDisciplina" class="space-y-5">
+
+            <!-- Nome -->
+            <div class="relative">
+                <input id="nomeDisc" type="text" required placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2
+                    focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    Nome da Disciplina
+                </label>
+            </div>
+
+
+            <!-- Professor -->
+            <div class="relative">
+
+                <select id="codProfessor" required
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 bg-white
+                    focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <option value="" disabled selected>Selecione o professor</option>
+
+                </select>
+
+                
+
+            </div>
+
+            <!-- Turma -->
+            <div class="relative">
+
+                <select id="codTurma" required
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 bg-white
+                    focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <option value="" disabled selected>Selecione a turma</option>
+
+                </select>
+
+                
+
+            </div>
+
+            <!-- BOTÕES -->
+            <div class="flex flex-col gap-3 pt-2">
+
+                <button type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md">
+                    Cadastrar
+                </button>
+
+                <button type="button"
+                    onclick="window.location.href='listDisciplina.html'"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script src="../assets/js/pages/cadDisciplina.js"></script>
+
+</body>
+
+</html>
