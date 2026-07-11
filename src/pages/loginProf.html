@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Administrador</title>
+    <title>Login Professor</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -12,23 +12,30 @@
         body {
             background: linear-gradient(135deg, #0f172a, #1e293b);
         }
+        @media (max-width: 480px) {
+            .form-card { padding: 20px 16px !important; }
+        }
     </style>
 </head>
 
-<body class="flex items-center justify-center min-h-screen">
+<body class="flex items-center justify-center min-h-screen p-4">
 
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 form-card">
 
-        <h1 class="text-3xl font-bold text-center text-slate-800 mb-6">
-            Cadastro de Administrador
+        <div class="flex justify-center mb-6">
+            <img src="../assets/icons/LogoVetorizado.svg" class="w-14 h-14">
+        </div>
+
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-2">
+            Professor
         </h1>
+        <p class="text-center text-gray-400 text-sm mb-6">Acesse sua conta</p>
 
-        <form id="formAdmin" class="space-y-5">
+        <form id="formLoginProf" class="space-y-5">
 
-
-            <!-- Nome -->
+            <!-- RM -->
             <div class="relative">
-                <input id="nomeAdmin" type="text" required placeholder=" "
+                <input id="rmProf" type="text" required placeholder=" "
                     class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                 <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
@@ -37,29 +44,13 @@
                     peer-focus:top-2
                     peer-focus:text-sm">
 
-                    Nome do Administrador
-                </label>
-            </div>
-
-            <!-- Email -->
-            <div class="relative">
-                <input id="emailAdmin" type="email" required placeholder=" "
-                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
-                    peer-placeholder-shown:top-3.5
-                    peer-placeholder-shown:text-base
-                    peer-focus:top-2
-                    peer-focus:text-sm">
-
-                    E-mail Institucional
+                    RM
                 </label>
             </div>
 
             <!-- Senha -->
             <div class="relative">
-
-                <input id="senhaAdmin" type="password" placeholder=" "
+                <input id="senhaProf" type="password" placeholder=" "
                     class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                 <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
@@ -71,53 +62,43 @@
                     Senha
                 </label>
 
-                <button type="button" onclick="toggleSenha()" class="absolute right-3 top-3">
-
+                <button type="button" onclick="toggleSenha()" class="absolute right-3 top-3 cursor-pointer">
                     <img id="iconeSenha" src="../assets/icons/visibility.svg" class="w-5 h-5">
-
                 </button>
-
             </div>
+
             <!-- BOTÕES -->
             <div class="flex flex-col gap-3 pt-2">
-
                 <button type="submit"
-                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md">
-                    Cadastrar
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md cursor-pointer">
+                    Entrar
                 </button>
 
-                <button type="button" onclick="window.location.href='listProf.html'"
-                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
-                    Cancelar
+                <button type="button" onclick="history.back()"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg cursor-pointer">
+                    Voltar
                 </button>
-
             </div>
 
         </form>
     </div>
 
-    <script type="module" src="../assets/js/pages/cadAdmin.js"></script>
     <script>
         function toggleSenha() {
-            const input = document.getElementById("senhaAdmin");
+            const input = document.getElementById("senhaProf");
             const icone = document.getElementById("iconeSenha");
 
             const isPassword = input.type === "password";
-
             input.type = isPassword ? "text" : "password";
-
             icone.src = isPassword
                 ? "../assets/icons/visibility_off.svg"
                 : "../assets/icons/visibility.svg";
         }
 
-        function limpar() {
-            document.getElementById("formAdmin").reset();
-
-            // reset estado visual
-            document.getElementById("senhaAdmin").type = "password";
-            document.getElementById("iconeSenha").src = "../assets/icons/visibility.svg";
-        }
+        document.getElementById("formLoginProf").addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("Login professor — em breve com API.");
+        });
     </script>
 
 </body>

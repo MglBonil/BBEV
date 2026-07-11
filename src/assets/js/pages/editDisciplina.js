@@ -6,7 +6,7 @@ async function carregarDisciplina() {
 
     if (!id) {
         alert("ID da disciplina não informado.");
-        window.location.href = "hub.html";
+        window.location.href = "painelProfessor.html";
         return;
     }
 

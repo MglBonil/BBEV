@@ -54,31 +54,28 @@ async function carregarTurmas() {
             tbody.innerHTML += `
                 <tr class="hover:bg-gray-50">
 
-                    <td class="py-4">${turma.idTurma}</td>
+                    <td class="py-4 ">${turma.idTurma}</td>
 
-                    <td class="py-4 font-medium">
-                        ${turma.nomeTurma}
+                    <td class="py-4 ">
+                        ${turma.nomeTurma} 
                     </td>
 
                     <td class="py-4">
-                        ${turma.anoTurma}
+                        ${turma.anoTurma} 
                     </td>
 
                     <td class="py-4">
-                        ${turma.grupoTurma}
+                        ${turma.grupoTurma} 
                     </td>
 
-                    <td class="py-4">
-                        ${turma.cursoTurma ?? "-"}
+                    <td class="py-4 ">
+                        ${turma.cursoTurma ?? "-"} 
                     </td>
 
-                    <td class="py-4">
-                        ${turma.periodoTurma}
+                    <td class="py-4 ">
+                        ${turma.periodoTurma} 
                     </td>
 
-                    <td class="py-4">
-                        ${turma.codProfessor ?? "-"}
-                    </td>
 
                     <td class="py-4 text-right">
 

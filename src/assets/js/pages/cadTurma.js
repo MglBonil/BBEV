@@ -1,33 +1,5 @@
 const API = "http://localhost:8080";
 
-async function carregarProfessores() {
-    const select = document.getElementById("codProfessor");
-
-    try {
-        const response = await fetch(`${API}/professor/all?page=0&size=200`, {
-            method: "GET",
-            headers: { "Accept": "application/json" }
-        });
-
-        if (!response.ok) {
-            throw new Error("Erro HTTP: " + response.status);
-        }
-
-        const pagina = await response.json();
-        const professores = pagina.content || [];
-
-        professores.forEach(professor => {
-            const option = document.createElement("option");
-            option.value = professor.rmProf;
-            option.textContent = `${professor.rmProf} - ${professor.nomeProf}`;
-            select.appendChild(option);
-        });
-
-    } catch (erro) {
-        console.error(erro);
-        select.innerHTML = `<option value="">Erro ao carregar professores</option>`;
-    }
-}
 
 async function cadTurma(event) {
     event.preventDefault();
@@ -37,7 +9,6 @@ async function cadTurma(event) {
     const grupoTurma = document.getElementById("grupoTurma").value.trim();
     const cursoTurma = document.getElementById("cursoTurma").value.trim();
     const periodoTurma = document.getElementById("periodoTurma").value.trim();
-    const codProfessor = document.getElementById("codProfessor").value;
 
     if (!nomeTurma) {
         alert("Informe o nome da turma.");
@@ -54,10 +25,7 @@ async function cadTurma(event) {
         return;
     }
 
-    if (!codProfessor) {
-        alert("Selecione o professor responsável.");
-        return;
-    }
+    
 
     const novaTurma = {
         nomeTurma: nomeTurma,
@@ -65,7 +33,7 @@ async function cadTurma(event) {
         grupoTurma: grupoTurma ? grupoTurma.charAt(0) : null,
         cursoTurma: cursoTurma || null,
         periodoTurma: periodoTurma || null,
-        codProfessor: Number(codProfessor)
+        
     };
 
     try {
@@ -82,7 +50,7 @@ async function cadTurma(event) {
         }
 
         alert("Turma cadastrada com sucesso!");
-        window.location.href = "hub.html";
+        window.location.href = "painelProfessor.html";
 
     } catch (error) {
         console.error(error);
@@ -95,6 +63,5 @@ async function cadTurma(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    carregarProfessores();
     document.getElementById("formTurma").addEventListener("submit", cadTurma);
 });

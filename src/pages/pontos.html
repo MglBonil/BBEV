@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BraiamBank — Pontos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="../assets/css/pontos.css" rel="stylesheet">
+  <link href="../assets/css/styles.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -20,7 +20,67 @@
       }
     }
   </script>
-  
+
+  <style>
+    .page-sub { font-size: 0.875rem; color: #64748b; margin: -20px 0 24px; }
+
+    .page-search-wrap { position: relative; margin-bottom: 28px; }
+    .page-search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; width: 18px; height: 18px; pointer-events: none; z-index: 1; }
+    .page-search-icon svg { width: 18px; height: 18px; }
+    .page-search-input { width: 100%; max-width: 360px; height: 40px; border: 1px solid #e2e8f0; border-radius: 10px; background: #fff; padding: 0 12px 0 38px; font-size: 0.875rem; color: #1e293b; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
+    .page-search-input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.12); }
+
+    .student-row { display: flex; gap: 28px; align-items: flex-start; }
+    .student-card-visual { width: 240px; flex-shrink: 0; }
+    .controls-panel { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .controls-panel .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+    .pontos-box { font-size: 0.95rem; font-weight: 600; color: #1e293b; white-space: nowrap; }
+    .select-gray { height: 38px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff; padding: 0 10px; font-size: 0.8rem; color: #475569; outline: none; flex: 1; min-width: 140px; }
+    .select-gray:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.12); }
+
+    .btn-gray { width: 38px; height: 38px; border-radius: 8px; border: 1px solid #e2e8f0; background: #fff; color: #475569; font-size: 1.1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+    .btn-gray:hover { background: #f1f5f9; }
+    .counter-box { min-width: 40px; text-align: center; font-size: 1.2rem; font-weight: 700; color: #0f172a; }
+    .btn-orange { height: 38px; padding: 0 20px; border-radius: 8px; border: none; background: #f5a623; color: #fff; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
+    .btn-orange:hover { background: #e8971a; }
+    .btn-orange-del { height: 38px; padding: 0 16px; border-radius: 8px; border: 1px solid #fecaca; background: #fff; color: #ef4444; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
+    .btn-orange-del:hover { background: #fef2f2; }
+
+    .card-monogram { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900; color: #fff; position: relative; z-index: 1; }
+    .card-student-name { font-size: 0.75rem; color: rgba(255,255,255,.7); position: relative; z-index: 1; margin-top: 2px; }
+
+    .modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+    .modal-bg.open { display: flex; }
+    .modal { background: #fff; border-radius: 16px; padding: 28px; max-width: 400px; width: 100%; text-align: center; }
+    .modal-icon { width: 48px; height: 48px; margin: 0 auto 16px; color: #ef4444; }
+    .modal-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+    .modal-body { font-size: 0.875rem; color: #64748b; margin-bottom: 24px; line-height: 1.5; }
+    .modal-actions { display: flex; gap: 12px; justify-content: center; }
+    .btn-cancel { padding: 10px 24px; border-radius: 8px; border: 1px solid #e2e8f0; background: #fff; color: #475569; font-size: 0.875rem; font-weight: 500; cursor: pointer; }
+    .btn-confirm-del { padding: 10px 24px; border-radius: 8px; border: none; background: #ef4444; color: #fff; font-size: 0.875rem; font-weight: 600; cursor: pointer; }
+
+    .toast-container { position: fixed; bottom: 80px; right: 20px; z-index: 200; display: flex; flex-direction: column; gap: 8px; }
+    .toast { display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 10px; background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,.12); font-size: 0.85rem; color: #1e293b; animation: toastIn 0.3s ease; }
+    .toast svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .toast.success svg { color: #22c55e; }
+    .toast.error svg { color: #ef4444; }
+    .toast-out { opacity: 0; transform: translateX(100%); transition: all 0.3s ease; }
+    @keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+    @media (max-width: 768px) {
+      .student-row { flex-direction: column; }
+      .student-card-visual { width: 100%; }
+      .page-search-input { max-width: 100%; }
+      .controls-panel .row { flex-wrap: wrap; }
+      .btn-orange { flex: 1; }
+    }
+    @media (max-width: 480px) {
+      .toast-container { right: 12px; left: 12px; bottom: 76px; }
+      .modal { padding: 20px 16px; }
+    }
+  </style>
+
 </head>
 <body>
 

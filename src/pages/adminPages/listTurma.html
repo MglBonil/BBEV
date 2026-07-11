@@ -17,18 +17,20 @@
         body {
             background: linear-gradient(135deg, #0f172a, #1e293b);
         }
+        @media (max-width: 640px) {
+            .list-card { padding: 16px !important; }
+            .list-title { font-size: 1.5rem !important; }
+            .list-header { flex-direction: column; gap: 12px; align-items: stretch !important; }
+            .list-header a, .list-header button { width: 100%; text-align: center; }
+        }
     </style>
 </head>
 
-<body class="min-h-screen flex items-center justify-center p-6">
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6">
 
+    <div class="w-full max-w-6xl bg-white rounded-2xl shadow-2xl p-6 sm:p-8 list-card">
 
-
-    <div class="w-full max-w-6xl bg-white rounded-2xl shadow-2xl p-8">
-
-
-
-        <form class="mb-8">
+        <form class="mb-6">
             <label for="search" class="sr-only">Pesquisar</label>
 
             <div class="relative">
@@ -41,51 +43,47 @@
                     </svg>
                 </div>
 
-                <input type="search" id="search" placeholder="Pesquisar turma..."
-                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-
-
+                <input type="search" id="search" placeholder="     Pesquisar turma..."
+                    class="block w-full p-3 sm:p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
 
             </div>
         </form>
 
-
         <!-- Cabeçalho -->
-        <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center justify-between mb-6 list-header">
 
             <div>
-                <h1 class="text-3xl font-bold text-slate-800">
+                <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 list-title">
                     Turmas
                 </h1>
 
-                <p class="text-gray-500 mt-1">
+                <p class="text-gray-500 mt-1 text-sm">
                     Lista de turmas cadastradas.
                 </p>
             </div>
 
-            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-md"
-                onclick="window.location.href='cadTurma.html'">
+            <a href="cadTurma.html"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-md inline-block text-center whitespace-nowrap">
                 + Nova Turma
-            </button>
+            </a>
 
         </div>
 
         <!-- Tabela -->
         <div class="overflow-x-auto">
 
-            <table class="w-full">
+            <table class="w-full text-sm sm:text-base">
 
                 <thead>
 
                     <tr class="border-b text-left text-gray-600">
-                        <th class="py-4 font-semibold">ID</th>
-                        <th class="py-4 font-semibold">Nome</th>
-                        <th class="py-4 font-semibold">Ano</th>
-                        <th class="py-4 font-semibold">Grupo</th>
-                        <th class="py-4 font-semibold">Curso</th>
-                        <th class="py-4 font-semibold">Período</th>
-                        <th class="py-4 font-semibold">Professor</th>
-                        <th class="py-4 font-semibold text-right">Ações</th>
+                        <th class="py-3 sm:py-4 font-semibold text-center">ID</th>
+                        <th class="py-3 sm:py-4 font-semibold text-center">Nome</th>
+                        <th class="py-3 sm:py-4 font-semibold text-center">Ano</th>
+                        <th class="py-3 sm:py-4 font-semibold text-center">Grupo</th>
+                        <th class="py-3 sm:py-4 font-semibold text-center">Curso</th>
+                        <th class="py-3 sm:py-4 font-semibold text-center">Período</th>
+                        <th class="py-3 sm:py-4 font-semibold text-center">Ações</th>
                     </tr>
 
                 </thead>
@@ -103,16 +101,14 @@
             </table>
 
         </div>
-        <br><br>
-        <button onclick="window.location.href='painelAdmin.html'"
-            class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-5 py-3 rounded-lg shadow-md">Voltar
-        </button>
+        <br>
+        
 
     </div>
     
 
     <!-- IMPORT DO JS EXTERNO -->
-    <script src="../assets/js/pages/listTurma.js"></script>
+    <script src="../../assets/js/pages/listTurma.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 
 

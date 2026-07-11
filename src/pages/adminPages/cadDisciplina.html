@@ -12,12 +12,15 @@
         body {
             background: linear-gradient(135deg, #0f172a, #1e293b);
         }
+        @media (max-width: 480px) {
+            .form-card { padding: 20px 16px !important; }
+        }
     </style>
 </head>
 
-<body class="flex items-center justify-center min-h-screen">
+<body class="flex items-center justify-center min-h-screen p-4">
 
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 form-card">
 
         <h1 class="text-3xl font-bold text-center text-slate-800 mb-6">
             Cadastro de Disciplina
@@ -92,7 +95,7 @@
 
     </div>
 
-    <script src="../assets/js/pages/cadDisciplina.js"></script>
+    <script src="../../assets/js/pages/cadDisciplina.js"></script>
 
 </body>
 

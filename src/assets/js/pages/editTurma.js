@@ -6,7 +6,7 @@ async function carregarTurma() {
 
     if (!id) {
         alert("ID da turma não informado.");
-        window.location.href = "hub.html";
+        window.location.href = "painelProfessor.html";
         return;
     }
 
@@ -24,7 +24,7 @@ async function carregarTurma() {
         document.getElementById("anoTurma").value = turma.anoTurma ?? "";
         document.getElementById("cursoTurma").value = turma.cursoTurma ?? "";
 
-        await carregarProfessores(turma.codProfessor);
+        
 
         if (turma.grupoTurma != null) {
             document.getElementById("grupoTurma").value = turma.grupoTurma;
@@ -39,37 +39,6 @@ async function carregarTurma() {
     }
 }
 
-async function carregarProfessores(codSelecionado) {
-    const select = document.getElementById("codProfessor");
-
-    try {
-        const response = await fetch(`${API}/professor/all?page=0&size=200`, {
-            headers: { "Accept": "application/json" }
-        });
-
-        if (!response.ok) {
-            throw new Error("Erro HTTP: " + response.status);
-        }
-
-        const pagina = await response.json();
-        const professores = pagina.content || [];
-
-        professores.forEach(professor => {
-            const option = document.createElement("option");
-            option.value = professor.rmProf;
-            option.textContent = `${professor.rmProf} - ${professor.nomeProf}`;
-            select.appendChild(option);
-        });
-
-        if (codSelecionado != null) {
-            select.value = codSelecionado;
-        }
-
-    } catch (erro) {
-        console.error(erro);
-        select.innerHTML = `<option value="">Erro ao carregar professores</option>`;
-    }
-}
 
 async function editTurma(event) {
     event.preventDefault();
@@ -82,7 +51,7 @@ async function editTurma(event) {
     const grupoTurma = document.getElementById("grupoTurma").value;
     const cursoTurma = document.getElementById("cursoTurma").value.trim();
     const periodoTurma = document.getElementById("periodoTurma").value;
-    const codProfessor = document.getElementById("codProfessor").value;
+    
 
     if (!nomeTurma) {
         alert("Informe o nome da turma.");
@@ -104,10 +73,7 @@ async function editTurma(event) {
         return;
     }
 
-    if (!codProfessor) {
-        alert("Selecione o professor responsável.");
-        return;
-    }
+    
 
     const turmaAtualizada = {
         nomeTurma: nomeTurma,
@@ -115,7 +81,7 @@ async function editTurma(event) {
         grupoTurma: grupoTurma,
         cursoTurma: cursoTurma || null,
         periodoTurma: periodoTurma,
-        codProfessor: Number(codProfessor)
+        
     };
 
     try {
@@ -132,7 +98,7 @@ async function editTurma(event) {
         }
 
         alert("Turma atualizada com sucesso!");
-        window.location.href = "hub.html";
+        window.location.href = "painelProfessor.html";
 
     } catch (error) {
         console.error(error);
@@ -172,7 +138,7 @@ async function deleteTurma(event) {
         }
 
         alert("Turma excluída com sucesso!");
-        window.location.href = "hub.html";
+        window.location.href = "painelProfessor.html";
 
     } catch (error) {
         console.error(error);
