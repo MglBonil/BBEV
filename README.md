@@ -1,6 +1,6 @@
 # BBEV
 
-Frontend estático (HTML + JS + CSS) que consome a API Spring Boot em `http://localhost:8080`.
+Frontend estático (HTML + JS + CSS) que consome a API Spring Boot em `https://bbevapi.onrender.com`.
 
 ## Estrutura
 

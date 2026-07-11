@@ -59,7 +59,7 @@ async function cadAdmin(event) {
 
     try {
 
-        const response = await fetch("http://localhost:8080/admin", {
+        const response = await fetch("https://bbevapi.onrender.com/admin", {
 
             method: "POST",
             headers: {

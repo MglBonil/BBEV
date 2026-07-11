@@ -12,7 +12,7 @@ async function carregarAdmin() {
 
     try {
 
-        const response = await fetch("http://localhost:8080/admin/all?page=0&size=200", {
+        const response = await fetch("https://bbevapi.onrender.com/admin/all?page=0&size=200", {
             method: "GET",
             headers: {
                 "Accept": "application/json"
