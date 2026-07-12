@@ -9,7 +9,7 @@ async function carregarAdmin() {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/admin/${id}`);
+        const response = await fetch(`${API}/admin/${id}`);
 
         if (!response.ok) {
             throw new Error("Administrador não encontrado.");
@@ -88,7 +88,7 @@ async function editAdmin(event) {
     };
 
     try {
-        const response = await fetch(`http://localhost:8080/admin/${id}`, {
+        const response = await fetch(`${API}/admin/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -144,7 +144,7 @@ async function deleteAdmin(event) {
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/admin/${id}`, {
+            const response = await fetch(`${API}/admin/${id}`, {
                 method: "DELETE"
             });
 

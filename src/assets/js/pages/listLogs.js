@@ -1,5 +1,3 @@
-const API = "http://localhost:8080";
-
 async function carregarLogs() {
     const tbody = document.getElementById("tabelaLogs");
 

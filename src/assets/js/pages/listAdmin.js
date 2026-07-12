@@ -12,7 +12,7 @@ async function carregarAdmin() {
 
     try {
 
-        const response = await fetch("http://localhost:8080/admin/all?page=0&size=200", {
+        const response = await fetch(`${API}/admin/all?page=0&size=200`, {
             method: "GET",
             headers: {
                 "Accept": "application/json"
@@ -44,13 +44,13 @@ async function carregarAdmin() {
             tbody.innerHTML += `
                 <tr class="hover:bg-gray-50">
 
-                    <td class="py-4">${admin.idAdm}</td>
+                    <td class="py-4 text-center">${admin.idAdm}</td>
 
-                    <td class="py-4 font-medium">${admin.nomeAdm}</td>
+                    <td class="py-4 font-medium text-center">${admin.nomeAdm}</td>
 
-                    <td class="py-4 text-gray-600">${admin.emailAdm}</td>
+                    <td class="py-4 text-gray-600 text-center">${admin.emailAdm}</td>
 
-                    <td class="py-4">
+                    <td class="py-4 text-center">
                         ${
                             admin.statusAdm
                                 ? '<span class="text-green-600 font-semibold">Ativo</span>'
@@ -58,7 +58,7 @@ async function carregarAdmin() {
                         }
                     </td>
 
-                    <td class="py-4 text-right">
+                    <td class="py-4 text-center">
                         <button
                             class="text-blue-600 hover:text-blue-800 font-semibold"
                             onclick="window.location.href='editAdmin.html'+'?id=${admin.idAdm}'">

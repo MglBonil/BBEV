@@ -1,5 +1,3 @@
-const API = "http://localhost:8080";
-
 async function carregarDisciplinas() {
 
     const tbody = document.getElementById("tabelaDisciplinas");
@@ -53,21 +51,21 @@ async function carregarDisciplinas() {
             tbody.innerHTML += `
                 <tr class="hover:bg-gray-50">
 
-                    <td class="py-4">${disciplina.idDisc}</td>
+                    <td class="py-4 text-center">${disciplina.idDisc}</td>
 
-                    <td class="py-4 font-medium">
+                    <td class="py-4 font-medium text-center">
                         ${disciplina.nomeDisc}
                     </td>
 
-                    <td class="py-4">
+                    <td class="py-4 text-center">
                         ${disciplina.codProfessor ?? "-" }
                     </td>
 
-                    <td class="py-4">
+                    <td class="py-4 text-center">
                         ${disciplina.codTurma ?? "-"}
                     </td>
 
-                    <td class="py-4 text-right">
+                    <td class="py-4 text-center">
 
                         <button
                             class="text-blue-600 hover:text-blue-800 font-semibold"

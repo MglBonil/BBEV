@@ -1,5 +1,3 @@
-const API = "http://localhost:8080";
-
 const grid = document.getElementById("cardsGrid");
 
 const paletas = [

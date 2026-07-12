@@ -1,5 +1,3 @@
-const API = "http://localhost:8080";
-
 async function carregarTurmas() {
 
     const tbody = document.getElementById("tabelaTurmas");
@@ -54,30 +52,30 @@ async function carregarTurmas() {
             tbody.innerHTML += `
                 <tr class="hover:bg-gray-50">
 
-                    <td class="py-4 ">${turma.idTurma}</td>
+                    <td class="py-4 text-center">${turma.idTurma}</td>
 
-                    <td class="py-4 ">
+                    <td class="py-4 text-center">
                         ${turma.nomeTurma} 
                     </td>
 
-                    <td class="py-4">
+                    <td class="py-4 text-center">
                         ${turma.anoTurma} 
                     </td>
 
-                    <td class="py-4">
+                    <td class="py-4 text-center">
                         ${turma.grupoTurma} 
                     </td>
 
-                    <td class="py-4 ">
+                    <td class="py-4 text-center">
                         ${turma.cursoTurma ?? "-"} 
                     </td>
 
-                    <td class="py-4 ">
+                    <td class="py-4 text-center">
                         ${turma.periodoTurma} 
                     </td>
 
 
-                    <td class="py-4 text-right">
+                    <td class="py-4 text-center">
 
                         <button
                             class="text-blue-600 hover:text-blue-800 font-semibold"

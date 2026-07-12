@@ -12,7 +12,7 @@ async function carregarProfessores() {
 
     try {
 
-        const response = await fetch("http://localhost:8080/professor/all?page=0&size=200", {
+        const response = await fetch(`${API}/professor/all?page=0&size=200`, {
             method: "GET",
             headers: {
                 "Accept": "application/json"
@@ -44,13 +44,13 @@ async function carregarProfessores() {
             tbody.innerHTML += `
                 <tr class="hover:bg-gray-50">
 
-                    <td class="py-4">${professor.rmProf}</td>
+                    <td class="py-4 text-center">${professor.rmProf}</td>
 
-                    <td class="py-4 font-medium">${professor.nomeProf}</td>
+                    <td class="py-4 font-medium text-center">${professor.nomeProf}</td>
 
-                    <td class="py-4 text-gray-600">${professor.emailProf}</td>
+                    <td class="py-4 text-gray-600 text-center">${professor.emailProf}</td>
 
-                    <td class="py-4">
+                    <td class="py-4 text-center">
                         ${
                             professor.statusProf
                                 ? '<span class="text-green-600 font-semibold">Ativo</span>'
@@ -58,7 +58,7 @@ async function carregarProfessores() {
                         }
                     </td>
 
-                    <td class="py-4 text-right">
+                    <td class="py-4 text-center">
                         <button
                             class="text-blue-600 hover:text-blue-800 font-semibold"
                             onclick="window.location.href='editProf.html'+'?rm=${professor.rmProf}'">

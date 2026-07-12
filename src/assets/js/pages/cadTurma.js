@@ -1,5 +1,3 @@
-const API = "http://localhost:8080";
-
 
 async function cadTurma(event) {
     event.preventDefault();
@@ -50,7 +48,7 @@ async function cadTurma(event) {
         }
 
         alert("Turma cadastrada com sucesso!");
-        window.location.href = "painelProfessor.html";
+        window.location.href = "listTurma.html";
 
     } catch (error) {
         console.error(error);

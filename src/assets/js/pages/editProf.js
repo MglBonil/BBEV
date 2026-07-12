@@ -9,7 +9,7 @@ async function carregarProfessor() {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/professor/${rm}`);
+        const response = await fetch(`${API}/professor/${rm}`);
 
         if (!response.ok) {
             throw new Error("Professor não encontrado.");
@@ -112,7 +112,7 @@ async function editProf(event) {
 
     try {
 
-        const response = await fetch(`http://localhost:8080/professor/${rm}`, {
+        const response = await fetch(`${API}/professor/${rm}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -191,7 +191,7 @@ async function deleteProf(event) {
 
         try {
 
-            const response = await fetch(`http://localhost:8080/professor/${rm}`, {
+            const response = await fetch(`${API}/professor/${rm}`, {
                 method: "DELETE"
             });
 

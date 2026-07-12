@@ -1,5 +1,3 @@
-const API = "http://localhost:8080";
-
 async function carregarDisciplina() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");

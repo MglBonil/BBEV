@@ -57,7 +57,7 @@ async function cadProf(event) {
     };
 
     try {
-        const response = await fetch("http://localhost:8080/professor", {
+        const response = await fetch(`${API}/professor`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

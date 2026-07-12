@@ -1,5 +1,3 @@
-const API = "http://localhost:8080";
-
 async function carregarProfessores() {
     const select = document.getElementById("codProfessor");
 
