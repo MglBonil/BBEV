@@ -102,7 +102,7 @@ async function cadDisciplina(event) {
         }
 
         alert("Disciplina cadastrada com sucesso!");
-        window.location.href = "painelAdmin.html";
+        document.getElementById("formDisciplina").reset();
 
     } catch (error) {
         console.error(error);
