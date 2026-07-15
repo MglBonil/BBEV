@@ -216,6 +216,32 @@
       </div>
     </div>
 
+    <!-- Alunos -->
+    <div>
+      <div
+        class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
+        id="alunoToggle">
+        <div class="flex items-center gap-3">
+          <img src="../../assets/icons/aluno.svg" class="w-5 h-5 shrink-0"> Alunos
+        </div>
+        <svg class="w-4 h-4 transition-transform duration-200" id="alunoArrow" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+            clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="sub-group " id="alunoSub">
+        <div>
+          <a href="#" onclick="carregarPagina('listAluno.html','Listar Alunos'); return false"
+            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+            Listar</a>
+          <a href="#" onclick="carregarPagina('cadAluno.html','Criar Aluno'); return false"
+            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+            Criar</a>
+        </div>
+      </div>
+    </div>
+
     <a href="#" onclick="carregarPagina('logs.html','Logs do sistema'); return false"
       class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
       <img src="../../assets/icons/logs.svg" class="w-5 h-5 shrink-0"> Logs do sistema
@@ -284,6 +310,7 @@
     toggleGroup('adminToggle', 'adminSub', 'adminArrow');
     toggleGroup('turmaToggle', 'turmaSub', 'turmaArrow');
     toggleGroup('discToggle', 'discSub', 'discArrow');
+    toggleGroup('alunoToggle', 'alunoSub', 'alunoArrow');
 
     function carregarPagina(url, titulo) {
       document.getElementById('contentFrame').src = url;
