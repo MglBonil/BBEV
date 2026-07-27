@@ -5,3 +5,10 @@ opencode.json
 skills-lock.json
 
 src/metrics.html
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
