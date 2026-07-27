@@ -37,7 +37,7 @@ async function carregarTurmas(codSelecionado) {
     const select = document.getElementById("codTurma");
 
     try {
-        const response = await fetch(`${API}/turma/all?page=0&size=200`, {
+        const response = await fetch(`${API}/turma/all?page=0&size=100`, {
             headers: { "Accept": "application/json" }
         });
 
