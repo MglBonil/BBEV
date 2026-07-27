@@ -1,1 +1,1 @@
-const API = "https://bbevapi.onrender.com/";
+const API = "https://bbevapi.onrender.com";
