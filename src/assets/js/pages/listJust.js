@@ -50,7 +50,7 @@ async function carregarTurmas() {
             
 
             tbody.innerHTML += `
-                <tr class="hover:bg-gray-50 justificativa-linha">
+                <tr class="hover:bg-gray-50">
 
                     <td class="py-4 text-center">${Justificativas.idCat}</td>
 
@@ -113,13 +113,12 @@ window.onload = carregarTurmas;
 
 const search = document.getElementById("search");
 
-if (search) {
-    search.addEventListener("input", () => {
-        const filtro = search.value.trim().toLowerCase();
+search.addEventListener("input", () => {
+    const filtro = search.value.toLowerCase();
 
-        document.querySelectorAll("#tabelaJustificativas tr.justificativa-linha").forEach(linha => {
-            const texto = linha.textContent.toLowerCase();
-            linha.style.display = texto.includes(filtro) ? "" : "none";
-        });
+    document.querySelectorAll("#tabelaJustificativas tr").forEach(linha => {
+        const texto = linha.textContent.toLowerCase();
+
+        linha.style.display = texto.includes(filtro) ? "" : "none";
     });
-}
+});
