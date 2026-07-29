@@ -12,7 +12,7 @@ async function carregarTurmas() {
 
     try {
 
-        const response = await fetch(`${API}/categoria/all?page=0&size=50`, {
+        const response = await fetch(`${API}/categoria/all?page=0&size=20`, {
             method: "GET",
             headers: {
                 "Accept": "application/json"
@@ -26,13 +26,13 @@ async function carregarTurmas() {
         }
 
         const pagina = await response.json();
-        const turmas = pagina.content || [];
+        const Justificativas = pagina.content || [];
 
-        console.log(turmas);
+        console.log(Justificativas);
 
         tbody.innerHTML = "";
 
-        if (turmas.length === 0) {
+        if (Justificativas.length === 0) {
 
             tbody.innerHTML = `
                 <tr>
@@ -45,33 +45,34 @@ async function carregarTurmas() {
             return;
         }
 
-        turmas.forEach(turma => {
+        Justificativas.forEach(Justificativas => {
 
             
 
             tbody.innerHTML += `
                 <tr class="hover:bg-gray-50">
 
-                    <td class="py-4 text-center">${turma.idTurma}</td>
+                    <td class="py-4 text-center">${Justificativas.idCat}</td>
 
                     <td class="py-4 text-center">
-                        ${turma.nomeTurma} 
+                        ${Justificativas.descricaoCat} 
                     </td>
 
                     <td class="py-4 text-center">
-                        ${turma.anoTurma} 
+                        ${Justificativas.tipoCat} 
                     </td>
 
                     <td class="py-4 text-center">
-                        ${turma.grupoTurma} 
+                        ${Justificativas.valorPadraoCat} 
                     </td>
 
-                    <td class="py-4 text-center">
-                        ${turma.cursoTurma ?? "-"} 
-                    </td>
 
                     <td class="py-4 text-center">
-                        ${turma.periodoTurma} 
+                        ${
+                            Justificativas.statusCat
+                                ? '<span class="text-green-600 font-semibold">Ativo</span>'
+                                : '<span class="text-red-600 font-semibold">Inativo</span>'
+                        } 
                     </td>
 
 
@@ -79,7 +80,7 @@ async function carregarTurmas() {
 
                         <button
                             class="text-blue-600 hover:text-blue-800 font-semibold"
-                            onclick="window.location.href='editTurma.html?id=${turma.idTurma}'">
+                            onclick="window.location.href='editTurma.html?id=${Justificativas.idCat}'">
 
                             Editar
 
