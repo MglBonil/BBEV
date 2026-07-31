@@ -50,8 +50,8 @@ async function criarJustificativa(event) {
     }
 
     const novaJustificativa = {
-        descricaoCat: dados.descJust,
-        tipoCat: dados.tipoJust,
+        descricaoCat: dados.descricaoCat,
+        tipoCat: dados.tipoCat,
         valorPadraoCat: dados.valorNumber
     };
 
