@@ -80,7 +80,7 @@ async function carregarTurmas() {
 
                         <button
                             class="text-blue-600 hover:text-blue-800 font-semibold"
-                            onclick="window.location.href='pagesAdmin/editJust.html?id=${Justificativas.idCat}'">
+                            onclick="window.location.href='adminPages/editJust.html?id=${Justificativas.idCat}'">
 
                             Editar
 
