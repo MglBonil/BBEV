@@ -31,7 +31,7 @@
         </h1>
         <p class="text-center text-gray-400 text-sm mb-6">Acesse sua conta</p>
 
-        <form id="formLoginAdmin" class="space-y-5" onsubmit="loginAdmin(event)">
+        <form id="formLoginAdmin" class="space-y-5">
 
             <!-- Email -->
             <div class="relative">
@@ -62,7 +62,7 @@
                     Senha
                 </label>
 
-                <button type="button" onclick="toggleSenha()" class="absolute right-3 top-3 cursor-pointer">
+                <button id="toggleSenhaButton" type="button" class="absolute right-3 top-3 cursor-pointer">
                     <img id="iconeSenha" src="../assets/icons/visibility.svg" class="w-5 h-5">
                 </button>
             </div>
@@ -85,20 +85,6 @@
 
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/pages/loginAdm.js"></script>
-    <script>
-        function toggleSenha() {
-            const input = document.getElementById("senhaAdmin");
-            const icone = document.getElementById("iconeSenha");
-
-            const isPassword = input.type === "password";
-            input.type = isPassword ? "text" : "password";
-            icone.src = isPassword
-                ? "../assets/icons/visibility_off.svg"
-                : "../assets/icons/visibility.svg";
-        }
-
-        
-    </script>
 
 </body>
 
