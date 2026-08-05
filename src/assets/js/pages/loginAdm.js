@@ -1,6 +1,5 @@
 
 async function loginAdmin(event) {
-    event.preventDefault();
 
     
 
