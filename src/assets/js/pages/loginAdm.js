@@ -1,5 +1,5 @@
 
-async function editAdmin(event) {
+async function loginAdmin(event) {
     event.preventDefault();
 
     
@@ -8,13 +8,15 @@ async function editAdmin(event) {
     const senha = document.getElementById("senhaAdmin").value
 
 
-
+    
 
     let authRequest = {
 
         email: email,
         senha: senha
     };
+
+    alert("ok");
 
     try {
         const response = await fetch(`${API}/auth/login/admin`, {
