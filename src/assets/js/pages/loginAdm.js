@@ -15,12 +15,12 @@ async function loginAdmin(event) {
         email: email,
         senha: senha
     };
-
-    alert("ok");
+    
+    alert('');
 
     try {
         const response = await fetch(`${API}/auth/login/admin`, {
-            method: "PUT",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
