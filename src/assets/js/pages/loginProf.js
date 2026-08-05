@@ -27,7 +27,7 @@ function esconderErro() {
 }
 
 function toggleSenha() {
-    const input = getElement("senhaAdmin");
+    const input = getElement("senhaProf");
     const icone = getElement("iconeSenha");
     if (!input || !icone) return;
 
@@ -57,7 +57,7 @@ function setLoading(btnEntrar, ativo) {
     }
 }
 
-async function loginAdmin(event) {
+async function loginProf(event) {
     event.preventDefault();
     esconderErro();
 
@@ -66,8 +66,8 @@ async function loginAdmin(event) {
         return;
     }
 
-    const email = getElement("emailAdmin")?.value.trim() || "";
-    const senha = getElement("senhaAdmin")?.value || "";
+    const email = getElement("emailProf")?.value.trim() || "";
+    const senha = getElement("senhaProf")?.value || "";
 
     if (!email || !senha) {
         mostrarErro("Informe e-mail e senha para continuar.");
@@ -79,7 +79,7 @@ async function loginAdmin(event) {
         return;
     }
 
-    const btnEntrar = document.querySelector('#formLoginAdmin button[type="submit"]');
+    const btnEntrar = document.querySelector('#formLoginProf button[type="submit"]');
     setLoading(btnEntrar, true);
 
     const controller = new AbortController();
@@ -88,7 +88,7 @@ async function loginAdmin(event) {
     const authRequest = { email, senha };
 
     try {
-        const response = await fetch(`${API}/auth/login/admin`, {
+        const response = await fetch(`${API}/auth/login/prof`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(authRequest),
@@ -108,10 +108,10 @@ async function loginAdmin(event) {
 
         sessionStorage.setItem(
             SESSION_KEY,
-            JSON.stringify({ role: "adm", email })
+            JSON.stringify({ role: "prof", email })
         );
 
-        window.location.href = "adminPages/painelAdmin.html";
+        window.location.href = "painelProfessor.html";
     } catch (error) {
         console.error(error);
 
@@ -133,11 +133,11 @@ async function loginAdmin(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const form = getElement("formLoginAdmin");
+    const form = getElement("formLoginProf");
     const toggleButton = getElement("toggleSenhaButton");
 
     if (form) {
-        form.addEventListener("submit", loginAdmin);
+        form.addEventListener("submit", loginProf);
     }
 
     if (toggleButton) {
