@@ -1,0 +1,165 @@
+async function carregarAdmin() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (!id) {
+        alert("Id não informado.");
+        window.location.href = "listAdmin.html";
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API}/admin/${id}`);
+
+        if (!response.ok) {
+            throw new Error("Administrador não encontrado.");
+        }
+
+        const admin = await response.json();
+
+        document.getElementById("idAdm").value = admin.idAdm;
+        document.getElementById("nomeAdmin").value = admin.nomeAdm;
+        document.getElementById("emailAdmin").value = admin.emailAdm;
+        document.getElementById("statusAtivo").checked = admin.statusAdm;
+        document.getElementById("statusInativo").checked = !admin.statusAdm;
+
+    } catch (error) {
+        console.error(error);
+        alert(error.message || "Erro ao carregar administrador.");
+    }
+}
+
+async function editAdmin(event) {
+    event.preventDefault();
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const nomeAdm = document.getElementById("nomeAdmin").value.trim();
+    const emailAdm = document.getElementById("emailAdmin").value.trim();
+    const senhaAdm = document.getElementById("senhaAdmin").value.trim();
+
+    
+    if (!nomeAdm) {
+        alert("O nome é obrigatório.");
+        return;
+    }
+
+    if (!/^[A-Za-zÀ-ÿ\s]+$/.test(nomeAdm)) {
+        alert("O nome não pode conter números ou caracteres especiais.");
+        return;
+    }
+
+    if (nomeAdm.length > 30) {
+        alert("O nome deve ter no máximo 30 caracteres.");
+        return;
+    }
+
+    
+    if (!emailAdm) {
+        alert("O email é obrigatório.");
+        return;
+    }
+
+    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailAdm)) {
+        alert("Email inválido!");
+        return;
+    }
+
+    if (emailAdm.length > 30) {
+        alert("O Email deve ter no máximo 30 caracteres.");
+        return;
+    }
+
+    
+    if (senhaAdm !== "") {
+        if (!/^(?=.*[$*&@#]).{8,32}$/.test(senhaAdm)) {
+            alert("A senha deve ter entre 8 e 32 caracteres e conter pelo menos um caractere especial ($*&@#).");
+            return;
+        }
+    }
+
+    let admin = {
+        idAdm: Number(id),
+        nomeAdm: nomeAdm,
+        emailAdm: emailAdm,
+        senhaAdm: senhaAdm === "" ? null : senhaAdm,
+        statusAdm: document.getElementById("statusAtivo").checked
+    };
+
+    try {
+        const response = await fetch(`${API}/admin/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(admin)
+        });
+
+        const result = await response.json().catch(() => null);
+
+        if (!response.ok) {
+            throw new Error(result?.message || `Erro ${response.status} ao atualizar administrador.`);
+        }
+
+        alert("Administrador atualizado com sucesso!");
+        window.location.href = "listAdmin.html";
+
+    } catch (error) {
+        console.error(error);
+
+        if (error instanceof TypeError) {
+            alert("Não foi possível conectar à API.");
+            return;
+        }
+
+        alert(error.message || "Erro ao atualizar administrador.");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    carregarAdmin();
+
+    document
+        .getElementById("formAdmin")
+        .addEventListener("submit", editAdmin);
+
+    document
+        .getElementById("btnExcluir")
+        .addEventListener("click", deleteAdmin);
+});
+
+async function deleteAdmin(event) {
+    event.preventDefault();
+
+    const resultado = prompt("Tem certeza que deseja excluir este administrador? Digite 'CONFIRMAR' para confirmar. Todos os dados atrelados a esse professor serão perdidos").toUpperCase() === "CONFIRMAR";
+
+    if (resultado) {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        if (!id) {
+            alert("id não informado.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`${API}/admin/${id}`, {
+                method: "DELETE"
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro ${response.status} ao excluir administrador.`);
+            }
+
+            alert("Administrador excluído com sucesso!");
+            window.location.href = "listAdmin.html";
+
+        } catch (error) {
+            console.error(error);
+            alert(error.message || "Erro ao excluir administrador.");
+        }
+    } else {
+        alert("Exclusão cancelada.");
+    }
+}
