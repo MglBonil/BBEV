@@ -1,4 +1,3 @@
-
 const SESSION_KEY = "sessaoBBEV";
 const REQUEST_TIMEOUT = 15000;
 
@@ -13,7 +12,6 @@ function isApiConfigured() {
 function mostrarErro(mensagem) {
     const erroLogin = getElement("erroLogin");
     if (!erroLogin) return;
-
     erroLogin.textContent = mensagem;
     erroLogin.classList.remove("hidden");
 }
@@ -21,7 +19,6 @@ function mostrarErro(mensagem) {
 function esconderErro() {
     const erroLogin = getElement("erroLogin");
     if (!erroLogin) return;
-
     erroLogin.classList.add("hidden");
     erroLogin.textContent = "";
 }
@@ -95,23 +92,31 @@ async function loginProf(event) {
             signal: controller.signal,
         });
 
-        const result = await response.json().catch(() => null);
+
+        const data = await response.json().catch(() => null);
 
         if (!response.ok) {
             const mensagem =
-                result?.message ||
+                data?.message ||
                 (response.status === 401 || response.status === 403
                     ? "E-mail ou senha incorretos."
                     : `Erro ${response.status}: não foi possível autenticar.`);
             throw new Error(mensagem);
         }
 
-        sessionStorage.setItem(
-            SESSION_KEY,
-            JSON.stringify({ role: "prof", email })
-        );
+        if (!data) {
+            throw new Error("A API não retornou dados válidos.");
+        }
+
+        const sessionData = {
+            role: "prof",
+            ...data
+        };
+
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
 
         window.location.href = "painelProfessor.html";
+
     } catch (error) {
         console.error(error);
 
@@ -143,4 +148,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toggleButton) {
         toggleButton.addEventListener("click", toggleSenha);
     }
-});
+});x
