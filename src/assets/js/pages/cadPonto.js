@@ -27,28 +27,6 @@ async function carregarJustificativas() {
     }
 }
 
-
-async function carregarProfessores() {
-    try {
-        const response = await fetch(`${API}/professor/all?page=0&size=100`, {
-            method: "GET",
-            headers: { "Accept": "application/json" }
-        });
-
-        if (!response.ok) {
-            throw new Error("Erro HTTP: " + response.status);
-        }
-
-        const aluno = await response.json();
-
-        document.getElementById("cod").textContent = aluno.rmAluno;
-
-    } catch (erro) {
-        console.error(erro);
-        select.innerHTML = `<option value="">Erro ao carregar professores</option>`;
-    }
-}
-
 async function carregarDisciplina() {
     const params = new URLSearchParams(window.location.search);
     const id= params.get("idDisc");
@@ -68,10 +46,7 @@ async function carregarDisciplina() {
 
         const disciplina = await response.json();
 
-        document.getElementById("id").value = disciplina.idDisc;
-        document.getElementById("nomeDisc").value = disciplina.nomeDisc ?? "";
-        document.getElementById("codProfessor").value = disciplina.codProfessor ?? "";
-        document.getElementById("codTurma").value = disciplina.codTurma ?? "";
+        document.getElementById("codDisc").value = disciplina.idDisc;
 
     } catch (error) {
         console.error(error);
@@ -114,13 +89,15 @@ async function carregarAluno() {
 async function cadPonto(event) {
     event.preventDefault();
 
-    const qntPontos = document.getElementById("qntPontos").value.trim();
+    const qtdPontos = document.getElementById("qtdPontos").value.trim();
     const codDisc = document.getElementById("codDisc").value;
-    const codAluno = document.getElementById("rmAluno").value;
-    const codProfessor = document.getElementById("codProfessor").value;
+    const codAluno = document.getElementById("rmAluno").textContent.trim();
     const codCat = document.getElementById("codCat").value;
 
-    if (!qntPontos || Number(qntPontos) === 0) {
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
+    const codProfessor = sessao?.rmProf;
+
+    if (!qtdPontos || Number(qtdPontos) === 0) {
         alert("Informe uma quantia de pontos.");
         return;
     }
@@ -145,13 +122,18 @@ async function cadPonto(event) {
         return;
     }
 
-    const novoPonto = {
-        qntPontos: qntPontos,
-        codProfessor: Number(codProfessor),
-        codAluno: Number(codAluno),
-        codDisc: Number(codDisc),
-        codCat: Number(codCat)
-    };
+    
+
+const novoPonto = {
+    codAluno: Number(codAluno),
+    codCat: Number(codCat),
+    codProf: Number(codProfessor),
+    codDisciplina: Number(codDisc),
+    qtdPontos: Number(qtdPontos)
+    
+};
+
+console.log("JSON que será enviado:", JSON.stringify(novoPonto));
 
     try {
         const response = await fetch(`${API}/pontos`, {
@@ -168,6 +150,8 @@ async function cadPonto(event) {
 
         alert("Ponto cadastrado com sucesso!");
         document.getElementById("formPonto").reset();
+
+        await totalPontos();
 
     } catch (error) {
         console.error(error);
@@ -238,7 +222,7 @@ async function totalPontos() {
 }
 
 function alterarPontos(valor) {
-    const input = document.getElementById("qntpontos");
+    const input = document.getElementById("qtdPontos");
 
     let pontos = Number(input.value) || 0;
 
@@ -251,7 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
     carregarJustificativas();  
     carregarAluno();
     totalPontos();
-    carregarProfessores();
     carregarDisciplina();
     
 
