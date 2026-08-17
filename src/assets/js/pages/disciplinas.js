@@ -47,16 +47,19 @@ async function carregarDisciplinas() {
     }
 }
 
+
+
 function mapearDisciplina(disciplina, index) {
     const paleta = paletas[index % paletas.length];
     const descricao = "Estudos de " +[disciplina.nomeDisc].filter(Boolean).join(" · ");
     return {
+        id: disciplina.idDisc,
         nome: disciplina.nomeDisc,
         descricao: descricao || "Sem descrição",
         gradiente: paleta.gradiente,
         botao: paleta.botao,
         sombra: paleta.sombra,
-        onClick: () => alert("Disciplina selecionada: " + disciplina.nomeDisc + "Em processo...")
+        onClick: () => window.location.href = `listAlunoDisc.html` + "?idDisc=" + disciplina.idDisc
     };
 }
 
