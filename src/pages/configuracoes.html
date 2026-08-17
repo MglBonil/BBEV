@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+        @media (max-width: 480px) {
+            .form-card { padding: 20px 16px !important; }
+        }
+
+        /* Toggle switch */
+        .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; inset: 0;
+            background-color: #d1d5db; border-radius: 999px; transition: .2s;
+        }
+        .slider::before {
+            content: ""; position: absolute; height: 18px; width: 18px;
+            left: 3px; bottom: 3px; background-color: white; border-radius: 50%; transition: .2s;
+        }
+        .switch input:checked + .slider { background-color: #2563eb; }
+        .switch input:checked + .slider::before { transform: translateX(20px); }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        .tab-btn { transition: .15s; }
+        .tab-btn.active {
+            color: #2563eb;
+            border-color: #2563eb;
+            background-color: #eff6ff;
+        }
+        .tab-btn:hover:not(.active) {
+            background-color: #f9fafb;
+        }
+
+        @media (max-width: 640px) {
+            .tab-nav { flex-direction: row !important; border-right: none !important;
+                border-bottom: 1px solid #e5e7eb; padding-right: 0 !important; padding-bottom: 12px; }
+            .tab-btn { border-right: none !important; border-bottom: 2px solid transparent; }
+            .tab-btn.active { border-bottom-color: #2563eb; border-right-color: transparent !important; }
+            .config-layout { flex-direction: column !important; }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl p-8 form-card">
+
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-1">
+            Configurações
+        </h1>
+        <p class="text-center text-sm text-gray-500 mb-6">
+            Gerencie as preferências do sistema
+        </p>
+
+        <div class="config-layout flex gap-8">
+
+            <!-- NAV DE TÓPICOS (VERTICAL) -->
+            <div class="tab-nav flex flex-col gap-1 shrink-0 w-full sm:w-48 border-r border-gray-200 pr-4">
+                <button type="button" onclick="mudarAba('perfil', this)"
+                    class="tab-btn active flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-gray-500 border-r-2 border-transparent rounded-l-lg text-left whitespace-nowrap">
+                    Perfil
+                </button>
+                <button type="button" onclick="mudarAba('sistema', this)"
+                    class="tab-btn flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-gray-500 border-r-2 border-transparent rounded-l-lg text-left whitespace-nowrap">
+                    Sistema
+                </button>
+                <button type="button" onclick="mudarAba('notificacoes', this)"
+                    class="tab-btn flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-gray-500 border-r-2 border-transparent rounded-l-lg text-left whitespace-nowrap">
+                    Notificações
+                </button>
+            </div>
+
+        <form id="formConfig" class="flex-1 min-w-0">
+
+            <!-- TÓPICO: PERFIL -->
+            <div id="tab-perfil" class="tab-panel active space-y-6">
+
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center shrink-0">
+                        <img src="../assets/icons/person.svg" class="w-7 h-7" alt="">
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-slate-800">Professor</p>
+                        <p class="text-xs text-gray-400">Cargo atual na plataforma</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-4 border-b border-gray-200 pb-2">
+                        Dados de Acesso
+                    </h2>
+
+                    <div class="space-y-5">
+
+                        <div class="relative">
+                            <input id="emailProfessor" type="email" required placeholder=" "
+                                class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                            <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                                peer-placeholder-shown:top-3.5
+                                peer-placeholder-shown:text-base
+                                peer-focus:top-2
+                                peer-focus:text-sm">
+                                E-mail
+                            </label>
+                        </div>
+
+                        <div class="relative">
+                            <input id="senhaAtual" type="password" placeholder=" "
+                                class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                            <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                                peer-placeholder-shown:top-3.5
+                                peer-placeholder-shown:text-base
+                                peer-focus:top-2
+                                peer-focus:text-sm">
+                                Senha Atual
+                            </label>
+
+                            <button type="button" onclick="toggleSenha('senhaAtual', 'iconeSenhaAtual')" class="absolute right-3 top-3">
+                                <img id="iconeSenhaAtual" src="../assets/icons/visibility.svg" class="w-5 h-5">
+                            </button>
+                        </div>
+
+                        <div class="relative">
+                            <input id="novaSenha" type="password" placeholder=" "
+                                class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                            <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                                peer-placeholder-shown:top-3.5
+                                peer-placeholder-shown:text-base
+                                peer-focus:top-2
+                                peer-focus:text-sm">
+                                Nova Senha
+                            </label>
+
+                            <button type="button" onclick="toggleSenha('novaSenha', 'iconeNovaSenha')" class="absolute right-3 top-3">
+                                <img id="iconeNovaSenha" src="../assets/icons/visibility.svg" class="w-5 h-5">
+                            </button>
+                        </div>
+
+                        <div class="relative">
+                            <input id="confirmarSenha" type="password" placeholder=" "
+                                class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                            <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                                peer-placeholder-shown:top-3.5
+                                peer-placeholder-shown:text-base
+                                peer-focus:top-2
+                                peer-focus:text-sm">
+                                Confirmar Nova Senha
+                            </label>
+
+                            <button type="button" onclick="toggleSenha('confirmarSenha', 'iconeConfirmarSenha')" class="absolute right-3 top-3">
+                                <img id="iconeConfirmarSenha" src="../assets/icons/visibility.svg" class="w-5 h-5">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TÓPICO: SISTEMA -->
+            <div id="tab-sistema" class="tab-panel space-y-5">
+
+                <h2 class="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-4 border-b border-gray-200 pb-2">
+                    Preferências do Sistema
+                </h2>
+
+                <div class="relative">
+                    <select id="idioma"
+                        class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
+                        <option>Português (Brasil)</option>
+                        <option>English</option>
+                        <option>Español</option>
+                    </select>
+                    <label class="absolute left-4 top-2 text-gray-500 text-sm">
+                        Idioma
+                    </label>
+                </div>
+
+                <div class="relative">
+                    <select id="fusoHorario"
+                        class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
+                        <option>(GMT-03:00) Brasília</option>
+                        <option>(GMT-04:00) Manaus</option>
+                        <option>(GMT-05:00) Rio Branco</option>
+                    </select>
+                    <label class="absolute left-4 top-2 text-gray-500 text-sm">
+                        Fuso Horário
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- TÓPICO: NOTIFICAÇÕES -->
+            <div id="tab-notificacoes" class="tab-panel space-y-4">
+
+                <h2 class="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-4 border-b border-gray-200 pb-2">
+                    Notificações
+                </h2>
+
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-slate-700">Notificações por e-mail</p>
+                        <p class="text-xs text-gray-400">Receber alertas importantes por e-mail</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="notifEmail" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-slate-700">Alteração de pontos</p>
+                        <p class="text-xs text-gray-400">Avisar quando pontos de alunos forem alterados</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="notifPontos" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-slate-700">Novos cadastros</p>
+                        <p class="text-xs text-gray-400">Avisar sobre novos administradores cadastrados</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="notifCadastros">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- BOTÕES -->
+            <div class="flex flex-col gap-3 pt-6">
+
+                <button type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md">
+                    Salvar Alterações
+                </button>
+
+                <button type="button" onclick="window.location.href='dashboard.html'"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </form>
+
+        </div>
+
+    </div>
+
+    <script src="../../assets/js/config.js"></script>
+    <script type="module" src="../../assets/js/pages/configuracoes.js"></script>
+    <script>
+        function mudarAba(nome, btn) {
+            document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+            document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+
+            document.getElementById("tab-" + nome).classList.add("active");
+            btn.classList.add("active");
+        }
+
+        function toggleSenha(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icone = document.getElementById(iconId);
+
+            const isPassword = input.type === "password";
+            input.type = isPassword ? "text" : "password";
+
+            icone.src = isPassword
+                ? "../assets/icons/visibility_off.svg"
+                : "../assets/icons/visibility.svg";
+        }
+
+        document.getElementById("formConfig").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const novaSenha = document.getElementById("novaSenha").value;
+            const confirmarSenha = document.getElementById("confirmarSenha").value;
+
+            if (novaSenha && novaSenha !== confirmarSenha) {
+                alert("As senhas não coincidem.");
+                return;
+            }
+
+            // lógica de salvamento das configurações
+        });
+    </script>
+
+</body>
+
+</html>

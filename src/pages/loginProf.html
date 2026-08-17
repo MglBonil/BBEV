@@ -33,9 +33,9 @@
 
         <form id="formLoginProf" class="space-y-5">
 
-            <!-- RM -->
+            <!-- E-mail -->
             <div class="relative">
-                <input id="rmProf" type="text" required placeholder=" "
+                <input id="emailProf" type="email" required placeholder=" "
                     class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                 <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
@@ -44,13 +44,13 @@
                     peer-focus:top-2
                     peer-focus:text-sm">
 
-                    RM
+                    E-mail
                 </label>
             </div>
 
             <!-- Senha -->
             <div class="relative">
-                <input id="senhaProf" type="password" placeholder=" "
+                <input id="senhaProf" type="password" required placeholder=" "
                     class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                 <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
@@ -62,10 +62,12 @@
                     Senha
                 </label>
 
-                <button type="button" onclick="toggleSenha()" class="absolute right-3 top-3 cursor-pointer">
-                    <img id="iconeSenha" src="../assets/icons/visibility.svg" class="w-5 h-5">
+                <button id="toggleSenhaButton" type="button" class="absolute right-3 top-3 cursor-pointer">
+                    <img id="iconeSenha" src="../assets/icons/visibility.svg" class="w-5 h-5" alt="Mostrar senha">
                 </button>
             </div>
+
+            <div id="erroLogin" class="hidden bg-red-50 border border-red-300 text-red-700 text-sm rounded-lg px-4 py-3"></div>
 
             <!-- BOTÕES -->
             <div class="flex flex-col gap-3 pt-2">
@@ -83,23 +85,8 @@
         </form>
     </div>
 
-    <script>
-        function toggleSenha() {
-            const input = document.getElementById("senhaProf");
-            const icone = document.getElementById("iconeSenha");
-
-            const isPassword = input.type === "password";
-            input.type = isPassword ? "text" : "password";
-            icone.src = isPassword
-                ? "../assets/icons/visibility_off.svg"
-                : "../assets/icons/visibility.svg";
-        }
-
-        document.getElementById("formLoginProf").addEventListener("submit", (e) => {
-            e.preventDefault();
-            alert("Login professor — em breve com API.");
-        });
-    </script>
+    <script src="../assets/js/config.js" defer></script>
+    <script src="../assets/js/pages/loginProf.js" defer></script>
 
 </body>
 

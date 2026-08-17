@@ -92,167 +92,196 @@
 
     </div>
 
-    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline"
-      href="../pontos.html">
+    <a href="#" onclick="carregarPagina('../cadPonto.html','Pontos'); return false"
+      class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
       <img src="../../assets/icons/wallet.svg" class="w-5 h-5 shrink-0"> Pontos
     </a>
 
     <div class="text-xs text-gray-400 uppercase tracking-wider font-medium px-3 pt-5 pb-2">Gestão</div>
 
-    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline"
-      href="#">
-      <img src="../../assets/icons/menu.svg" class="w-5 h-5 shrink-0"> Justificativa
-    </a>
-    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline"
-      href="#">
-      <img src="../../assets/icons/archive.svg" class="w-5 h-5 shrink-0"> Relatório
-    </a>
+    <!-- Justificativa -->
 
-    <div class="text-xs text-gray-400 uppercase tracking-wider font-medium px-3 pt-5 pb-2">Admin</div>
-
-    <!-- Professores -->
     <div>
+      <div>
+        <div
+          class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
+          id="justToggle" href="../listJust.html">
+          <div class="flex items-center gap-3">
+            <img src="../../assets/icons/menu.svg" class="w-5 h-5 shrink-0"> Justificativas
+          </div>
+          <svg class="w-4 h-4 transition-transform duration-200" id="profArrow" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
 
-      <div
-        class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
-        id="profToggle">
-        <div class="flex items-center gap-3">
-          <img src="../../assets/icons/professor.svg" class="w-5 h-5 shrink-0"> Professores
+
         </div>
-        <svg class="w-4 h-4 transition-transform duration-200" id="profArrow" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd"
-            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-            clip-rule="evenodd" />
-        </svg>
+        <div class="sub-group " id="justSub">
+          <div>
+            <a href="#" onclick="carregarPagina('../listJust.html','Listar Justificativas'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Listar</a>
+            <a href="#" onclick="carregarPagina('cadJust.html','Criar Justificativa'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Criar</a>
+          </div>
+        </div>
       </div>
 
-      <div class="sub-group " id="profSub">
-        <div>
-          <a href="#" onclick="carregarPagina('listProf.html','Listar Professores'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Listar</a>
-          <a href="#" onclick="carregarPagina('cadProf.html','Criar Professor'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Criar</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Administradores -->
-    <div>
-      <div
-        class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
-        id="adminToggle">
-        <div class="flex items-center gap-3">
-          <img src="../../assets/icons/admin.svg" class="w-5 h-5 shrink-0"> Administradores
-        </div>
-        <svg class="w-4 h-4 transition-transform duration-200" id="adminArrow" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd"
-            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-            clip-rule="evenodd" />
-        </svg>
-      </div>
-      <div class="sub-group " id="adminSub">
-        <div>
-          <a href="#" onclick="carregarPagina('listAdmin.html','Listar Administradores'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Listar</a>
-          <a href="#" onclick="carregarPagina('cadAdmin.html','Criar Administrador'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Criar</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Turmas -->
-    <div>
-      <div
-        class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
-        id="turmaToggle">
-        <div class="flex items-center gap-3">
-          <img src="../../assets/icons/turma.svg" class="w-5 h-5 shrink-0"> Turmas
-        </div>
-        <svg class="w-4 h-4 transition-transform duration-200" id="turmaArrow" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd"
-            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-            clip-rule="evenodd" />
-        </svg>
-      </div>
-      <div class="sub-group " id="turmaSub">
-        <div>
-          <a href="#" onclick="carregarPagina('listTurma.html','Listar Turmas'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Listar</a>
-          <a href="#" onclick="carregarPagina('cadTurma.html','Criar Turma'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Criar</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Disciplinas -->
-    <div>
-      <div
-        class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
-        id="discToggle">
-        <div class="flex items-center gap-3">
-          <img src="../../assets/icons/disciplina.svg" class="w-5 h-5 shrink-0"> Disciplinas
-        </div>
-        <svg class="w-4 h-4 transition-transform duration-200" id="discArrow" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd"
-            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-            clip-rule="evenodd" />
-        </svg>
-      </div>
-      <div class="sub-group " id="discSub">
-        <div>
-          <a href="#" onclick="carregarPagina('listDisciplina.html','Listar Disciplinas'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Listar</a>
-          <a href="#" onclick="carregarPagina('cadDisciplina.html','Criar Disciplina'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Criar</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Alunos -->
-    <div>
-      <div
-        class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
-        id="alunoToggle">
-        <div class="flex items-center gap-3">
-          <img src="../../assets/icons/aluno.svg" class="w-5 h-5 shrink-0"> Alunos
-        </div>
-        <svg class="w-4 h-4 transition-transform duration-200" id="alunoArrow" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd"
-            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-            clip-rule="evenodd" />
-        </svg>
-      </div>
-      <div class="sub-group " id="alunoSub">
-        <div>
-          <a href="#" onclick="carregarPagina('listAluno.html','Listar Alunos'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Listar</a>
-          <a href="#" onclick="carregarPagina('cadAluno.html','Criar Aluno'); return false"
-            class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-            Criar</a>
-        </div>
-      </div>
-    </div>
-
-    <a href="#" onclick="carregarPagina('logs.html','Logs do sistema'); return false"
-      class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-      <img src="../../assets/icons/logs.svg" class="w-5 h-5 shrink-0"> Logs do sistema
-    </a>
-
-    <div class="mt-auto pt-3 border-t border-gray-100">
       <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline"
         href="#">
-        <img src="../../assets/icons/exit.svg" class="w-5 h-5 shrink-0"> Sair
+        <img src="../../assets/icons/archive.svg" class="w-5 h-5 shrink-0"> Relatório
       </a>
-    </div>
+
+      <div class="text-xs text-gray-400 uppercase tracking-wider font-medium px-3 pt-5 pb-2">Admin</div>
+
+      <!-- Professores -->
+      <div>
+
+        <div
+          class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
+          id="profToggle">
+          <div class="flex items-center gap-3">
+            <img src="../../assets/icons/professor.svg" class="w-5 h-5 shrink-0"> Professores
+          </div>
+          <svg class="w-4 h-4 transition-transform duration-200" id="profArrow" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+
+        <div class="sub-group " id="profSub">
+          <div>
+            <a href="#" onclick="carregarPagina('listProf.html','Listar Professores'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Listar</a>
+            <a href="#" onclick="carregarPagina('cadProf.html','Criar Professor'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Criar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Administradores -->
+      <div>
+        <div
+          class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
+          id="adminToggle">
+          <div class="flex items-center gap-3">
+            <img src="../../assets/icons/admin.svg" class="w-5 h-5 shrink-0"> Administradores
+          </div>
+          <svg class="w-4 h-4 transition-transform duration-200" id="adminArrow" viewBox="0 0 20 20"
+            fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="sub-group " id="adminSub">
+          <div>
+            <a href="#" onclick="carregarPagina('listAdmin.html','Listar Administradores'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Listar</a>
+            <a href="#" onclick="carregarPagina('cadAdmin.html','Criar Administrador'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Criar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Turmas -->
+      <div>
+        <div
+          class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
+          id="turmaToggle">
+          <div class="flex items-center gap-3">
+            <img src="../../assets/icons/turma.svg" class="w-5 h-5 shrink-0"> Turmas
+          </div>
+          <svg class="w-4 h-4 transition-transform duration-200" id="turmaArrow" viewBox="0 0 20 20"
+            fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="sub-group " id="turmaSub">
+          <div>
+            <a href="#" onclick="carregarPagina('listTurma.html','Listar Turmas'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Listar</a>
+            <a href="#" onclick="carregarPagina('cadTurma.html','Criar Turma'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Criar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disciplinas -->
+      <div>
+        <div
+          class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
+          id="discToggle">
+          <div class="flex items-center gap-3">
+            <img src="../../assets/icons/disciplina.svg" class="w-5 h-5 shrink-0"> Disciplinas
+          </div>
+          <svg class="w-4 h-4 transition-transform duration-200" id="discArrow" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="sub-group " id="discSub">
+          <div>
+            <a href="#" onclick="carregarPagina('listDisciplina.html','Listar Disciplinas'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Listar</a>
+            <a href="#" onclick="carregarPagina('cadDisciplina.html','Criar Disciplina'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Criar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alunos -->
+      <div>
+        <div
+          class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
+          id="alunoToggle">
+          <div class="flex items-center gap-3">
+            <img src="../../assets/icons/aluno.svg" class="w-5 h-5 shrink-0"> Alunos
+          </div>
+          <svg class="w-4 h-4 transition-transform duration-200" id="alunoArrow" viewBox="0 0 20 20"
+            fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="sub-group " id="alunoSub">
+          <div>
+            <a href="#" onclick="carregarPagina('listAluno.html','Listar Alunos'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Listar</a>
+            <a href="#" onclick="carregarPagina('cadAluno.html','Criar Aluno'); return false"
+              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+              Criar</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" onclick="carregarPagina('logs.html','Logs do sistema'); return false"
+        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+        <img src="../../assets/icons/logs.svg" class="w-5 h-5 shrink-0"> Logs do sistema
+      </a>
+
+      <div class="mt-auto pt-3 border-t border-gray-100">
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline"
+          href="#">
+          <img src="../../assets/icons/exit.svg" class="w-5 h-5 shrink-0"> Sair
+        </a>
+      </div>
   </aside>
 
   <!-- overlay for mobile -->
@@ -306,16 +335,18 @@
       });
     }
 
+    toggleGroup('justToggle', 'justSub', 'justArrow');
     toggleGroup('profToggle', 'profSub', 'profArrow');
     toggleGroup('adminToggle', 'adminSub', 'adminArrow');
     toggleGroup('turmaToggle', 'turmaSub', 'turmaArrow');
     toggleGroup('discToggle', 'discSub', 'discArrow');
     toggleGroup('alunoToggle', 'alunoSub', 'alunoArrow');
+    
 
     function carregarPagina(url, titulo) {
       document.getElementById('contentFrame').src = url;
       document.getElementById('pageTitle').textContent = titulo;
-      currentPage = {url, titulo};
+      currentPage = { url, titulo };
       localStorage.setItem('currentPage', JSON.stringify(currentPage));
     }
 
