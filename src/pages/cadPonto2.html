@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pontos</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        @media (max-width: 480px) {
+            .form-card {
+                padding: 20px 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 form-card">
+
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-6">
+            Gerenciar Pontos
+        </h1>
+
+        <!-- DADOS DO ALUNO -->
+        <div class="flex flex-col items-center gap-2 mb-6 pb-6 border-b border-gray-200">
+
+            <div class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center">
+                <img src="../assets/icons/person.svg" class="w-8 h-8" alt="">
+            </div>
+
+            <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                <span id="nomeAluno"></span>
+            </h2>
+
+            <p class="text-sm text-gray-500">
+               RM: <span id="rmAluno"></span>
+            </p>
+
+            <div class="w-full bg-blue-50 rounded-lg px-5 py-1 mt-2 text-center">
+                <p class="text-sm text-black mb-1 font-bold">Pontos atuais</p>
+                <p class="text-3xl font-bold text-blue-600" id="totalPontos"></p>
+            </div>
+
+        </div>
+
+        <form id="formPonto" class="space-y-5">
+
+            <!-- Tipo -->
+            <div class="relative">
+                <select id="codCat" required
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 bg-white
+                    focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <option value="" disabled selected>Selecione a justificativa</option>
+
+                </select>
+            </div>
+
+            <!-- Disciplina -->
+            <div class="relative">
+                <select id="codDisc" required
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 bg-white
+                    focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <option value="" disabled selected>Selecione a disciplina</option>
+
+                </select>
+            </div>
+
+            <!-- Alterar pontos -->
+            <div class="relative">
+                <div class="flex items-stretch border border-gray-300 rounded-lg overflow-hidden
+                    focus-within:ring-2 focus-within:ring-blue-500">
+                    <button type="button" onclick="alterarPontos(-1)"
+                        class="w-12 flex items-center justify-center text-blue-600 hover:bg-blue-50 font-bold text-lg">
+                        −
+                    </button>
+                    <input id="qtdPontos" type="text" value="0" readonly
+                        class="w-full text-center border-x border-gray-300 text-base font-semibold text-slate-700 outline-none">
+                    <button type="button" onclick="alterarPontos(1)"
+                        class="w-12 flex items-center justify-center text-blue-600 hover:bg-blue-50 font-bold text-lg">
+                        +
+                    </button>
+                </div>
+            </div>
+
+            <!-- BOTÕES -->
+            <div class="flex flex-col gap-3 pt-2">
+
+                <button type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md">
+                    Enviar
+                </button>
+
+                <button type="button" onclick="window.location.href='listAluno.html'"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
+                    Cancelar
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/pages/cadPonto2.js"></script>
+
+
+</body>
+
+</html>

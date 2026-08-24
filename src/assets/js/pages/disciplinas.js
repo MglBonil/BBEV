@@ -59,7 +59,7 @@ function mapearDisciplina(disciplina, index) {
         gradiente: paleta.gradiente,
         botao: paleta.botao,
         sombra: paleta.sombra,
-        onClick: () => window.location.href = `listAlunoDisc.html` + "?idDisc=" + disciplina.idDisc
+        onClick: () => window.location.href = `listAlunoPontosDisc.html` + "?idDisc=" + disciplina.idDisc + "&codTurma=" + disciplina.codTurma
     };
 }
 

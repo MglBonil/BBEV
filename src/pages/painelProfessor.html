@@ -90,7 +90,7 @@
       <img src="../assets/icons/home.svg" class="w-5 h-5 shrink-0"> Inicio
     </a>
 
-    <a href="#" onclick="carregarPagina('cadPonto.html','Pontos'); return false"
+    <a href="#" onclick="carregarPagina('listAlunoPontos.html','Pontos'); return false"
       class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
       <img src="../assets/icons/wallet.svg" class="w-5 h-5 shrink-0"> Pontos
     </a>
@@ -164,7 +164,10 @@
 
     setTimeout(() => carregarPagina('turmas.html', 'Inicio'), 100);
 
-    alert("rmProfessor:" + localStorage.getItem("rmProfessor"));
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
+    console.log("Sessão:", sessao);
+
+
   </script>
 </body>
 
