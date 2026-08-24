@@ -231,6 +231,18 @@ function alterarPontos(valor) {
     input.value = pontos;
 }
 
+function cancelarCadPonto() {
+    const params = new URLSearchParams(window.location.search);
+    const idDisc = params.get("idDisc");
+    const codTurma = params.get("codTurma");
+
+    if (codTurma) {
+        window.location.href = `listAlunoPontosDisc.html?idDisc=${idDisc}&codTurma=${codTurma}`;
+    } else {
+        window.location.href = `listAlunoDisc.html?idDisc=${idDisc}`;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     carregarJustificativas();  
     carregarAluno();
