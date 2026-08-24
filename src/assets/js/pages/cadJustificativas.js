@@ -69,7 +69,7 @@ async function criarJustificativa(event) {
         }
 
         alert("Justificativa cadastrada com sucesso!");
-        window.location.href = "../listJust.html";
+        window.location.href = "../pages/listJust.html";
     } catch (error) {
         console.error(error);
         if (error instanceof TypeError) {
