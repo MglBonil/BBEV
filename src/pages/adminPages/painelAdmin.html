@@ -335,7 +335,7 @@
       });
     }
 
-    toggleGroup('justToggle', 'justSub', 'justArrow');
+    toggleGroup('justToggle', 'justSub', 'adminArrow');
     toggleGroup('profToggle', 'profSub', 'profArrow');
     toggleGroup('adminToggle', 'adminSub', 'adminArrow');
     toggleGroup('turmaToggle', 'turmaSub', 'turmaArrow');
@@ -351,7 +351,13 @@
     }
 
     let currentPage = JSON.parse(localStorage.getItem('currentPage')) || null;
-    setTimeout(() => carregarPagina(currentPage ? currentPage.url : "../turmas.html", currentPage ? currentPage.titulo : "Listar Turmas"), 100);
+
+    setTimeout(() => {
+        carregarPagina(
+            currentPage ? currentPage.url : "../turmas.html",
+            currentPage ? currentPage.titulo : "Listar Turmas"
+        );
+    }, 100);
   </script>
 </body>
 
