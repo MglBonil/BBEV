@@ -66,7 +66,7 @@ async function carregarAlunos() {
 
                         <button
                             class="text-blue-600 hover:text-blue-800 font-semibold"
-                            onclick="window.location.href='cadPonto2?rm=${aluno.rmAluno}'">
+                            onclick="window.location.href='cadPontoAluno.html?rm=${aluno.rmAluno}'">
 
                             Pontos
 
