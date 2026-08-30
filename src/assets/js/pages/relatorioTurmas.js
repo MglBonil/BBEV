@@ -92,7 +92,7 @@ function mapearTurma(turma, index) {
         gradiente: paleta.gradiente,
         botao: paleta.botao,
         sombra: paleta.sombra,
-        onClick: () => window.location.href = `disciplinas.html` + "?idTurma=" + turma.idTurma
+        onClick: () => window.location.href = `relatorioDisc.html` + "?idTurma=" + turma.idTurma
     };
 }
 

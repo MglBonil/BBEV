@@ -17,6 +17,7 @@ async function carregarJustificativas() {
         categorias.forEach(categoria => {
             const option = document.createElement("option");
             option.value = categoria.idCat;
+            option.dataset.valorPadraoCat = categoria.valorPadraoCat;
             option.textContent = `${categoria.idCat} - ${categoria.descricaoCat}`;
             select.appendChild(option);
         });
@@ -231,16 +232,18 @@ function alterarPontos(valor) {
     input.value = pontos;
 }
 
-function cancelarCadPonto() {
-    const params = new URLSearchParams(window.location.search);
-    const idDisc = params.get("idDisc");
-    const codTurma = params.get("codTurma");
+function atualizarValorPadrao() {
+    const select = document.getElementById("codCat");
+    const input = document.getElementById("qtdPontos");
 
-    if (codTurma) {
-        window.location.href = `listAlunoPontosDisc.html?idDisc=${idDisc}&codTurma=${codTurma}`;
-    } else {
-        window.location.href = `listAlunoDisc.html?idDisc=${idDisc}`;
+    const opcaoSelecionada = select.options[select.selectedIndex];
+
+    if (!opcaoSelecionada || !opcaoSelecionada.value) {
+        input.value = "";
+        return;
     }
+
+    input.value = opcaoSelecionada.dataset.valorPadraoCat || "";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -249,6 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     totalPontos();
     carregarDisciplina();
     
+    document.getElementById("codCat").addEventListener("change", atualizarValorPadrao);
 
     document.getElementById("formPonto").addEventListener("submit", cadPonto);
 });

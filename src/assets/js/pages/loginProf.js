@@ -148,4 +148,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toggleButton) {
         toggleButton.addEventListener("click", toggleSenha);
     }
-});x
+});

@@ -127,8 +127,9 @@
         </div>
       </div>
     </div>
-    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline"
-      href="#">
+
+    <a href="#" onclick="carregarPagina('relatorioTurmas.html','Relatório'); return false"
+      class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
       <img src="../assets/icons/archive.svg" class="w-5 h-5 shrink-0"> Relatório
     </a>
     
@@ -139,7 +140,7 @@
         <img src="../assets/icons/settings.svg" class="w-5 h-5 shrink-0"> Configurações
       </a>
       <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline"
-        href="#">
+        onclick="sairbtn()">
         <img src="../assets/icons/exit.svg" class="w-5 h-5 shrink-0"> Sair
       </a>
     </div>
@@ -205,6 +206,11 @@
 
     const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     console.log("Sessão:", sessao);
+
+    function sairbtn() {
+      sessionStorage.removeItem("sessaoBBEV");
+      window.location.href = "../pages/loginProf.html";
+    }
   </script>
 </body>
 

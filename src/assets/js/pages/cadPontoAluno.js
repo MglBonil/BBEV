@@ -17,42 +17,16 @@ async function carregarJustificativas() {
         categorias.forEach(categoria => {
             const option = document.createElement("option");
             option.value = categoria.idCat;
+            option.dataset.valorPadraoCat = categoria.valorPadraoCat;
             option.textContent = `${categoria.idCat} - ${categoria.descricaoCat}`;
             select.appendChild(option);
+            
         });
+
 
     } catch (erro) {
         console.error(erro);
         select.innerHTML = `<option value="">Erro ao carregar justificativase</option>`;
-    }
-}
-
-async function carregarDisciplinas() {
-    const select = document.getElementById("codDisc");
-
-    try {
-        const response = await fetch(`${API}/disciplina/all?page=0&size=100`, {
-            method: "GET",
-            headers: { "Accept": "application/json" }
-        });
-
-        if (!response.ok) {
-            throw new Error("Erro HTTP: " + response.status);
-        }
-
-        const pagina = await response.json();
-        const disciplinas = pagina.content || [];
-
-        disciplinas.forEach(disciplina => {
-            const option = document.createElement("option");
-            option.value = disciplina.idDisc;
-            option.textContent = `${disciplina.idDisc} - ${disciplina.nomeDisc}`;
-            select.appendChild(option);
-        });
-
-    } catch (erro) {
-        console.error(erro);
-        select.innerHTML = `<option value="">Erro ao carregar disciplinas</option>`;
     }
 }
 
@@ -86,6 +60,42 @@ async function carregarAluno() {
 }
 
 
+
+async function carregarDisciplinas() {
+    const select = document.getElementById("codDisc");
+    const params = new URLSearchParams(window.location.search);
+    const rm = params.get("rm");
+
+    if (!rm) {
+        alert("RM do aluno não informado.");
+        window.location.href = "../assets/pages/adminPages/painelAdmin.html";
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API}/disciplina/aluno/${rm}`, {
+            method: "GET",
+            headers: { "Accept": "application/json" }
+        });
+
+        if (!response.ok) {
+            throw new Error("Erro HTTP: " + response.status);
+        }
+
+        const disciplinas = await response.json();
+
+        disciplinas.forEach(disciplina => {
+            const option = document.createElement("option");
+            option.value = disciplina.idDisc;
+            option.textContent = `${disciplina.idDisc} - ${disciplina.nomeDisc}`;
+            select.appendChild(option);
+        });
+
+    } catch (erro) {
+        console.error(erro);
+        select.innerHTML = `<option value="">Erro ao carregar disciplinas</option>`;
+    }
+}
 
 async function cadPonto(event) {
     event.preventDefault();
@@ -125,14 +135,14 @@ async function cadPonto(event) {
 
     
 
-const novoPonto = {
-    codAluno: Number(codAluno),
-    codCat: Number(codCat),
-    codProf: Number(codProfessor),
-    codDisciplina: Number(codDisc),
-    qtdPontos: Number(qtdPontos)
-    
-};
+    const novoPonto = {
+        codAluno: Number(codAluno),
+        codCat: Number(codCat),
+        codProf: Number(codProfessor),
+        codDisciplina: Number(codDisc),
+        qtdPontos: Number(qtdPontos)
+        
+    };
 
 console.log("JSON que será enviado:", JSON.stringify(novoPonto));
 
@@ -232,12 +242,27 @@ function alterarPontos(valor) {
     input.value = pontos;
 }
 
+function atualizarValorPadrao() {
+    const select = document.getElementById("codCat");
+    const input = document.getElementById("qtdPontos");
+
+    const opcaoSelecionada = select.options[select.selectedIndex];
+
+    if (!opcaoSelecionada || !opcaoSelecionada.value) {
+        input.value = "";
+        return;
+    }
+
+    input.value = opcaoSelecionada.dataset.valorPadraoCat || "";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     carregarJustificativas();  
     carregarAluno();
     totalPontos();
     carregarDisciplinas();
-    
+
+    document.getElementById("codCat").addEventListener("change", atualizarValorPadrao);
 
     document.getElementById("formPonto").addEventListener("submit", cadPonto);
 });

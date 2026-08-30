@@ -42,6 +42,11 @@ async function cadAluno(event) {
         return;
     }
 
+    if (!/^\d{5}$/.test(rmAluno)) {
+        alert("RM inválido! Deve conter exatamente 5 números.");
+        return; 
+    }
+
     if (nomeAluno.length > 30) {
         alert("O nome deve ter no máximo 30 caracteres.");
         return;

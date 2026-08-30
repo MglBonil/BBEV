@@ -28,6 +28,11 @@ async function cadProf(event) {
         return;
     }
 
+    if (!/^[A-Za-zÀ-ÿ\s]+$/.test(nomeProf)) {
+        alert("O nome não pode conter números ou caracteres especiais.");
+        return;
+    }
+
     //Validar formato do Email
     if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailProf)) {
         alert("Email inválido!");
