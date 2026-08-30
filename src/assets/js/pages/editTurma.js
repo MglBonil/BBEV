@@ -4,7 +4,7 @@ async function carregarTurma() {
 
     if (!id) {
         alert("ID da turma não informado.");
-        window.location.href = "painelProfessor.html";
+        window.location.href = "listTurma.html";
         return;
     }
 
@@ -96,7 +96,7 @@ async function editTurma(event) {
         }
 
         alert("Turma atualizada com sucesso!");
-        window.location.href = "painelProfessor.html";
+        window.location.href = "listTurma.html";
 
     } catch (error) {
         console.error(error);
@@ -136,7 +136,7 @@ async function deleteTurma(event) {
         }
 
         alert("Turma excluída com sucesso!");
-        window.location.href = "painelProfessor.html";
+        window.location.href = "listTurma.html";
 
     } catch (error) {
         console.error(error);
