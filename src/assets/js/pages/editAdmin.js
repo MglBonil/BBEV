@@ -117,18 +117,6 @@ async function editAdmin(event) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    carregarAdmin();
-
-    document
-        .getElementById("formAdmin")
-        .addEventListener("submit", editAdmin);
-
-    document
-        .getElementById("btnExcluir")
-        .addEventListener("click", deleteAdmin);
-});
-
 async function deleteAdmin(event) {
     event.preventDefault();
 
@@ -163,3 +151,16 @@ async function deleteAdmin(event) {
         alert("Exclusão cancelada.");
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    carregarAdmin();
+
+    document
+        .getElementById("formAdmin")
+        .addEventListener("submit", editAdmin);
+
+    document
+        .getElementById("btnExcluir")
+        .addEventListener("click", deleteAdmin);
+});

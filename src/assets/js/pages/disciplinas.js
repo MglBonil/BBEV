@@ -12,14 +12,38 @@ async function carregarDisciplinas() {
 
     const params = new URLSearchParams(window.location.search);
     const idTurma = params.get("idTurma");
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));;
 
     if (!idTurma) {
         grid.innerHTML = `<div class="col-span-full text-center text-red-600 py-10">Turma não informada.</div>`;
         return;
     }
+    if (!sessao) {
+        grid.innerHTML = `<div class="col-span-full text-center text-red-600 py-10">Usuário não identificado.</div>`;
+        return;
+    }
+
 
     try {
-        const response = await fetch(`${API}/disciplina/turma/${idTurma}`, {
+        let url;
+
+        if(sessao.role === "prof") {    
+           const rmProf = sessao.rmProf;
+           url = `${API}/disciplina/professor/${rmProf}/turma/${idTurma}`;
+
+        }
+        
+        else if(sessao.role === "adm") {
+           const rmAdm = sessao.rmAdm;
+           url = `${API}/disciplina/turma/${idTurma}`;
+
+        }
+
+        else {
+            grid.innerHTML = `<div class="col-span-full text-center text-red-600 py-10">Função não identificada.</div>`;
+        }
+
+        const response = await fetch(url, {
             method: "GET",
             headers: {
                 "Accept": "application/json"

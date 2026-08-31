@@ -164,10 +164,18 @@ async function excluirJustificativa(event) {
     }
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
     const form = document.getElementById("formTurma");
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
+
+    if (!sessao || sessao.role !== "adm") {
+        document.querySelectorAll(".somenteAdm").forEach(elemento => {
+            elemento.style.display = "none";
+        });
+    }
 
     if (!form) {
         return;
