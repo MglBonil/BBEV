@@ -95,36 +95,10 @@
 
     <div class="text-xs text-gray-400 uppercase tracking-wider font-medium px-3 pt-5 pb-2">Gestão</div>
 
-    <!-- Justificativa -->
-
-    <div>
-      <div>
-        <div
-          class="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition cursor-pointer select-none"
-          id="justToggle" href="../listJust.html">
-          <div class="flex items-center gap-3">
-            <img src="../assets/icons/menu.svg" class="w-5 h-5 shrink-0"> Justificativas
-          </div>
-          <svg class="w-4 h-4 transition-transform duration-200" id="profArrow" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd"
-              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-              clip-rule="evenodd" />
-          </svg>
-
-
-        </div>
-        <div class="sub-group " id="justSub">
-          <div>
-            <a href="#" onclick="carregarPagina('listJust.html','Listar Justificativas'); return false"
-              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-              Listar</a>
-            <a href="#" onclick="carregarPagina('cadJust.html','Criar Justificativa'); return false"
-              class="flex items-center gap-3 px-3 py-1.5 ml-7 rounded-md text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
-              Criar</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <a href="#" onclick="carregarPagina('listJust.html','Justificativas'); return false"
+      class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
+      <img src="../assets/icons/menu.svg" class="w-5 h-5 shrink-0"> Justificativas
+    </a>
 
     <a href="#" onclick="carregarPagina('relatorioTurmas.html','Relatório'); return false"
       class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition no-underline">
@@ -195,8 +169,6 @@
       document.getElementById('contentFrame').src = url;
       document.getElementById('pageTitle').textContent = titulo;
     }
-
-    toggleGroup('justToggle', 'justSub', 'profArrow');
 
     setTimeout(() => carregarPagina('turmas.html', 'Inicio'), 100);
 

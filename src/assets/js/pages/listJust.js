@@ -1,6 +1,7 @@
 async function carregarTurmas() {
-
     const tbody = document.getElementById("tabelaJustificativas");
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
+    const ehAdm = sessao && sessao.role === "adm";
 
     tbody.innerHTML = `
         <tr>
@@ -76,17 +77,19 @@ async function carregarTurmas() {
                     </td>
 
 
-                    <td class="py-4 text-center">
-
-                        <button
-                            class="text-blue-600 hover:text-blue-800 font-semibold"
-                            onclick="window.location.href='adminPages/editJust.html?id=${Justificativas.idCat}'">
-
-                            Editar
-
-                        </button>
-
-                    </td>
+                    ${
+                        ehAdm
+                            ? `
+                                <td class="py-4 text-center">
+                                    <button
+                                        class="text-blue-600 hover:text-blue-800 font-semibold"
+                                        onclick="window.location.href='adminPages/editJust.html?id=${Justificativas.idCat}'">
+                                        Editar
+                                    </button>
+                                </td>
+                            `
+                            : ""
+                    }
 
                 </tr>
             `;
@@ -121,4 +124,15 @@ search.addEventListener("input", () => {
 
         linha.style.display = texto.includes(filtro) ? "" : "none";
     });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
+    const colunaAcoes = document.getElementById("colunaAcoes");
+
+    if (!sessao || sessao.role !== "adm") {
+        colunaAcoes.remove();
+    }
+
 });
