@@ -12,6 +12,7 @@ async function carregarDisciplinas() {
 
     const params = new URLSearchParams(window.location.search);
     const idTurma = params.get("idTurma");
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
 
     if (!idTurma) {
         grid.innerHTML = `<div class="col-span-full text-center text-red-600 py-10">Turma não informada.</div>`;
