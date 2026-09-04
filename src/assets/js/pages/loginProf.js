@@ -113,6 +113,7 @@ async function loginProf(event) {
             ...data
         };
 
+        sessionStorage.removeItem("sessaoBBEV");
         sessionStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
 
         window.location.href = "painelProfessor.html";

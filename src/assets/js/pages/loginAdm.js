@@ -106,6 +106,7 @@ async function loginAdmin(event) {
             throw new Error(mensagem);
         }
 
+        sessionStorage.removeItem("sessaoBBEV");
         sessionStorage.setItem(
             SESSION_KEY,
             JSON.stringify({ role: "adm", email })
