@@ -12,8 +12,9 @@ async function carregarEscalas() {
 
     const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const codProf = sessao?.rmProf;
+    const ehAdm = sessao?.role === "adm";
 
-    if (!codProf) {
+    if (!ehAdm && !codProf) {
         tbody.innerHTML = `
             <tr>
                 <td colspan="6" class="py-8 text-center text-red-600">
@@ -24,8 +25,12 @@ async function carregarEscalas() {
         return;
     }
 
+    const url = ehAdm
+        ? `${API}/escala-pontuacao/all?page=0&size=50`
+        : `${API}/escala-pontuacao/professor/${codProf}`;
+
     try {
-        const response = await fetch(`${API}/escala-pontuacao/professor/${codProf}`, {
+        const response = await fetch(url, {
             method: "GET",
             headers: { "Accept": "application/json" }
         });

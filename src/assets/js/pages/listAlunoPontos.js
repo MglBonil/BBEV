@@ -12,8 +12,9 @@ async function carregarAlunos() {
 
     const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const codProf = sessao?.rmProf;
+    const ehAdm = sessao?.role === "adm";
 
-    if (!codProf) {
+    if (!ehAdm && !codProf) {
         tbody.innerHTML = `
             <tr>
                 <td colspan="8" class="py-8 text-center text-red-600">
@@ -24,9 +25,13 @@ async function carregarAlunos() {
         return;
     }
 
+    const url = ehAdm
+        ? `${API}/aluno/all?page=0&size=50`
+        : `${API}/aluno/professor/${codProf}`;
+
     try {
 
-        const response = await fetch(`${API}/aluno/professor/${codProf}`, {
+        const response = await fetch(url, {
             method: "GET",
             headers: {
                 "Accept": "application/json"
