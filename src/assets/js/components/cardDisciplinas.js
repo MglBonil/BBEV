@@ -8,6 +8,10 @@
  * @param {string} disciplina.botao
  * @param {string} disciplina.sombra
  * @param {Function} disciplina.onClick
+ * @param {Object} [disciplina.acoesExtras] Ações adicionais exibidas como botões secundários
+ * @param {string} [disciplina.acoesExtras.rotulo] Texto do botão secundário
+ * @param {Function} [disciplina.acoesExtras.onClick] Handler do botão secundário
+ * @param {string} [disciplina.acoesExtras.cor] Cor do botão secundário (classes Tailwind)
  */
 function criarCardDisciplina(disciplina) {
 
@@ -15,6 +19,18 @@ function criarCardDisciplina(disciplina) {
 
     card.className =
         "relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md overflow-hidden";
+
+    const acoesExtrasHtml = disciplina.acoesExtras && disciplina.acoesExtras.rotulo
+        ? `
+            <div class="px-6 pt-3">
+                <button
+                    data-acao-extra
+                    class="block w-full select-none rounded-lg ${disciplina.acoesExtras.cor || "bg-gray-200 hover:bg-gray-300 text-gray-800"} py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase shadow-sm transition-all hover:shadow-md focus:opacity-[0.85] active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50">
+                    ${disciplina.acoesExtras.rotulo}
+                </button>
+            </div>
+        `
+        : "";
 
     card.innerHTML = `
         <div class="h-40 ${disciplina.gradiente}"></div>
@@ -45,9 +61,21 @@ function criarCardDisciplina(disciplina) {
             </button>
 
         </div>
+
+        ${acoesExtrasHtml}
     `;
 
     card.querySelector("button").addEventListener("click", disciplina.onClick);
+
+    if (disciplina.acoesExtras && disciplina.acoesExtras.rotulo) {
+        const btnExtra = card.querySelector("[data-acao-extra]");
+        if (btnExtra && typeof disciplina.acoesExtras.onClick === "function") {
+            btnExtra.addEventListener("click", (e) => {
+                e.stopPropagation();
+                disciplina.acoesExtras.onClick();
+            });
+        }
+    }
 
     return card;
 
