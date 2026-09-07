@@ -27,15 +27,15 @@ async function carregarDisciplinas() {
     try {
         let url;
 
-        if(sessao.role === "prof") {    
-           const rmProf = sessao.rmProf;
-           url = `${API}/disciplina/professor/${rmProf}/turma/${idTurma}`;
+        if(sessao.role === "prof") {
+            const rmProf = sessao.rmProf;
+            url = `${API}/disciplina/professor/${rmProf}/turma/${idTurma}`;
 
         }
-        
+
         else if(sessao.role === "adm") {
-           const rmAdm = sessao.rmAdm;
-           url = `${API}/disciplina/turma/${idTurma}`;
+            const rmAdm = sessao.rmAdm;
+            url = `${API}/disciplina/turma/${idTurma}`;
 
         }
 

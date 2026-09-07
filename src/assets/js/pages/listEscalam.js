@@ -10,8 +10,22 @@ async function carregarEscalas() {
         </tr>
     `;
 
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
+    const codProf = sessao?.rmProf;
+
+    if (!codProf) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="py-8 text-center text-red-600">
+                    Professor não identificado.
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
     try {
-        const response = await fetch(`${API}/escala-pontuacao/all?page=0&size=50`, {
+        const response = await fetch(`${API}/escala-pontuacao/professor/${codProf}`, {
             method: "GET",
             headers: { "Accept": "application/json" }
         });
@@ -20,8 +34,8 @@ async function carregarEscalas() {
             throw new Error(`Erro ${response.status} ao carregar escalas.`);
         }
 
-        const pagina = await response.json();
-        const escalas = Array.isArray(pagina) ? pagina : (pagina.content || []);
+        const data = await response.json();
+        const escalas = Array.isArray(data) ? data : (data.content || []);
 
         tbody.innerHTML = "";
 

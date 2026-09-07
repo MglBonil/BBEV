@@ -10,26 +10,37 @@ async function carregarAlunos() {
         </tr>
     `;
 
-    const params = new URLSearchParams(window.location.search);
-    const idDisc = params.get("idDisc");
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
+    const codProf = sessao?.rmProf;
+
+    if (!codProf) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="8" class="py-8 text-center text-red-600">
+                    Professor não identificado.
+                </td>
+            </tr>
+        `;
+        return;
+    }
 
     try {
 
-        const response = await fetch(`${API}/aluno/all?page=0&size=50`, {
+        const response = await fetch(`${API}/aluno/professor/${codProf}`, {
             method: "GET",
             headers: {
                 "Accept": "application/json"
             }
         });
 
-        
+
 
         if (!response.ok) {
             throw new Error("Erro HTTP: " + response.status);
         }
 
-        const pagina = await response.json();
-        const alunos = pagina.content || [];
+        const data = await response.json();
+        const alunos = Array.isArray(data) ? data : (data.content || []);
 
         console.log(alunos);
 
