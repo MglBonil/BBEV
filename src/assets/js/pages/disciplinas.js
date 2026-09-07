@@ -83,12 +83,7 @@ function mapearDisciplina(disciplina, index) {
         gradiente: paleta.gradiente,
         botao: paleta.botao,
         sombra: paleta.sombra,
-        onClick: () => window.location.href = `listAlunoPontosDisc.html` + "?idDisc=" + disciplina.idDisc + "&codTurma=" + disciplina.codTurma,
-        acoesExtras: {
-            rotulo: "Editar Escala",
-            cor: "bg-amber-400 hover:bg-amber-500 text-white",
-            onClick: () => window.location.href = `editEscalam.html?idDisc=${disciplina.idDisc}`
-        }
+        onClick: () => window.location.href = `listAlunoPontosDisc.html` + "?idDisc=" + disciplina.idDisc + "&codTurma=" + disciplina.codTurma
     };
 }
 
