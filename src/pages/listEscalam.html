@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intervalos de Menções</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        @media (max-width: 480px) {
+            .form-card {
+                padding: 20px 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-8 form-card">
+
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-1">
+            Intervalos de Menções
+        </h1>
+
+        <p class="text-center text-sm text-gray-500 mb-6">
+            Escalas de pontuação cadastradas
+        </p>
+
+        <div class="overflow-x-auto mb-6">
+
+            <table class="w-full text-sm">
+
+                <thead>
+                    <tr class="border-b text-left text-gray-600">
+                        <th class="py-3 font-semibold text-center">ID</th>
+                        <th class="py-3 font-semibold text-center">Disciplina</th>
+                        <th class="py-3 font-semibold text-center">MB</th>
+                        <th class="py-3 font-semibold text-center">B</th>
+                        <th class="py-3 font-semibold text-center">R</th>
+                        <th class="py-3 font-semibold text-center">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelaEscalas" class="divide-y divide-gray-200">
+                    <tr>
+                        <td colspan="6" class="py-8 text-center text-gray-500">
+                            Carregando escalas...
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="flex flex-col gap-3 pt-2">
+
+            <button type="button" id="btnVoltar"
+                class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
+                Voltar
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/pages/listEscalam.js"></script>
+
+</body>
+
+</html>

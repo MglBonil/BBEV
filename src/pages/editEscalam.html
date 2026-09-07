@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Intervalo de Menções</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        @media (max-width: 480px) {
+            .form-card {
+                padding: 20px 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 form-card">
+
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-1">
+            Editar Intervalo de Menções
+        </h1>
+
+        <p class="text-center text-sm text-gray-500 mb-2">
+            <span id="escopoDescricao">Limite inferior de cada menção</span>
+        </p>
+
+        <p class="text-center text-sm mb-6" id="statusCarregando">Carregando...</p>
+
+        <form id="formEscalam" class="space-y-5">
+
+            <input type="hidden" id="codDisc">
+
+            <div class="relative">
+                <input id="intervaloI" type="number" min="0" step="0.01" required placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    I — Limite inferior
+                </label>
+            </div>
+
+            <div class="relative">
+                <input id="intervaloR" type="number" min="0" step="0.01" required placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    R — Limite inferior
+                </label>
+            </div>
+
+            <div class="relative">
+                <input id="intervaloB" type="number" min="0" step="0.01" required placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    B — Limite inferior
+                </label>
+            </div>
+
+            <div class="relative">
+                <input id="intervaloMB" type="number" min="0" step="0.01" required placeholder=" "
+                    class="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all
+                    peer-placeholder-shown:top-3.5
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm">
+
+                    MB — Limite inferior
+                </label>
+            </div>
+
+            <div class="flex flex-col gap-3 pt-2">
+
+                <button id="btnSalvar" type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md">
+                    Salvar
+                </button>
+
+                <button type="button" onclick="window.location.href='listEscalam.html'"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/pages/editEscalam.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
+            const escopoDescricao = document.getElementById("escopoDescricao");
+
+            if (!sessao) {
+                window.location.href = "../loginProf.html";
+                return;
+            }
+
+            if (escopoDescricao) {
+                const ehAdm = sessao.role === "adm";
+                escopoDescricao.textContent = ehAdm
+                    ? "Editando o intervalo aplicado a todas as turmas"
+                    : "Editando o intervalo das suas turmas";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
