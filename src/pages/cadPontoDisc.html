@@ -89,8 +89,8 @@
                     Enviar
                 </button>
 
-                <button type="button" onclick="window.location.href='listAlunoDisc.html'"
-                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
+                <button type="button" onclick="window.location.href=`listAlunoDisc.html?idDisc=${idDisc}&codTurma=${codTurma}`"
+                        class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg">
                     Cancelar
                 </button>
 
@@ -103,6 +103,12 @@
 
     </div>
 
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const idDisc= params.get("idDisc");
+        const codTurma= params.get("idDisc");
+
+    </script>
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/pages/cadPontoDisc.js"></script>
 
