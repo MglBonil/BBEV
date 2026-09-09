@@ -130,9 +130,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const colunaAcoes = document.getElementById("colunaAcoes");
+    const form = document.getElementById("tableJust");
 
     if (!sessao || sessao.role !== "adm") {
         colunaAcoes.remove();
+        document.querySelectorAll(".somenteAdm").forEach(elemento => {
+            elemento.style.display = "none";
+        });
     }
-
 });
