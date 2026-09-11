@@ -195,7 +195,9 @@ async function carregarTurmas() {
 
 async function totalPontos() {
     const params = new URLSearchParams(window.location.search);
-    const rm = params.get("rm");
+    const rm = params.get("rm");   
+    const idDisc= params.get("idDisc");
+
 
     if (!rm) {
         alert("RM do aluno não informado.");
@@ -205,7 +207,7 @@ async function totalPontos() {
 
 
     try {
-        const response = await fetch(`${API}/pontos/aluno/${rm}/total`);
+        const response = await fetch(`${API}/pontos/aluno/${rm}/disciplina/${idDisc}/total`);
 
         if (!response.ok) {
             throw new Error("Aluno não encontrado.");

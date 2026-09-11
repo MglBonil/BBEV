@@ -160,8 +160,9 @@ console.log("JSON que será enviado:", JSON.stringify(novoPonto));
         }
 
         alert("Ponto cadastrado com sucesso!");
+        const disciplinaSelecionada = document.getElementById("codDisc").value;
         document.getElementById("formPonto").reset();
-
+        document.getElementById("codDisc").value = disciplinaSelecionada;
         await totalPontos();
 
     } catch (error) {
@@ -204,9 +205,16 @@ async function carregarTurmas() {
 
 
 async function totalPontos() {
+    const select = document.getElementById("codDisc");
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
+    const idDisc = select.value;
 
+
+    if (!idDisc) {
+        document.getElementById("totalPontos").textContent = "0";
+        return;
+    }
     if (!rm) {
         alert("RM do aluno não informado.");
         window.location.href = "../assets/pages/adminPages/painelAdmin.html";
@@ -215,20 +223,18 @@ async function totalPontos() {
 
 
     try {
-        const response = await fetch(`${API}/pontos/aluno/${rm}/total`);
+        const response = await fetch(`${API}/pontos/aluno/${rm}/disciplina/${idDisc}/total`);
 
         if (!response.ok) {
             throw new Error("Aluno não encontrado.");
         }
 
         const pontos = await response.json();
-
-        document.getElementById("rmAluno").textContent = pontos.rmAluno;
-        document.getElementById("totalPontos").textContent = pontos.totalPontos ?? "";
+        document.getElementById("totalPontos").textContent = pontos.totalPontos ?? 0;
 
     } catch (error) {
-        console.error(error);
-        alert(error.message || "Erro ao carregar aluno.");
+        console.error("Erro ao carregar pontos:", error);
+        document.getElementById("totalPontos").textContent = "0";
     }
 }
 
@@ -259,10 +265,9 @@ function atualizarValorPadrao() {
 document.addEventListener("DOMContentLoaded", () => {
     carregarJustificativas();  
     carregarAluno();
-    totalPontos();
     carregarDisciplinas();
 
     document.getElementById("codCat").addEventListener("change", atualizarValorPadrao);
-
+    document.getElementById("codDisc").addEventListener("change", totalPontos);
     document.getElementById("formPonto").addEventListener("submit", cadPonto);
 });
