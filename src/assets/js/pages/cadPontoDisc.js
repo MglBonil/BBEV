@@ -29,19 +29,13 @@ async function carregarJustificativas() {
 }
 
 async function carregarDisciplina() {
-    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const params = new URLSearchParams(window.location.search);
     const id= params.get("idDisc");
 
     if (!id) {
-        if (!sessao || sessao.role !== "adm") {
             alert("RM do aluno não informado.");
-            window.location.href = "../assets/pages/adminPages/painelAdmin.html";
+            window.location.href = "../pages/loginProf.html";
             return;
-        } else{
-            alert("RM do aluno não informado.");
-            window.location.href = "../assets/pages/painelProfessor.html";
-        }
     }
 
     try {
@@ -63,19 +57,13 @@ async function carregarDisciplina() {
 
 
 async function carregarAluno() {
-    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
 
     if (!rm) {
-        if (!sessao || sessao.role !== "adm") {
             alert("RM do aluno não informado.");
-            window.location.href = "../assets/pages/adminPages/painelAdmin.html";
+            window.location.href = "../pages/loginProf.html";
             return;
-        } else{
-            alert("RM do aluno não informado.");
-            window.location.href = "../assets/pages/painelProfessor.html";
-        }
     }
 
 
@@ -213,14 +201,9 @@ async function totalPontos() {
 
 
     if (!rm) {
-        if (!sessao || sessao.role !== "adm") {
             alert("RM do aluno não informado.");
-            window.location.href = "../assets/pages/adminPages/painelAdmin.html";
+            window.location.href = "../pages/loginProf.html";
             return;
-        } else{
-            alert("RM do aluno não informado.");
-            window.location.href = "../assets/pages/painelProfessor.html";
-        }
     }
 
 
