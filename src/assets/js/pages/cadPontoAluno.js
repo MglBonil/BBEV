@@ -31,13 +31,19 @@ async function carregarJustificativas() {
 }
 
 async function carregarAluno() {
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
 
     if (!rm) {
-        alert("RM do aluno não informado.");
-        window.location.href = "../assets/pages/adminPages/painelAdmin.html";
-        return;
+        if (!sessao || sessao.role !== "adm") {
+            alert("RM do aluno não informado.");
+            window.location.href = "../assets/pages/adminPages/painelAdmin.html";
+            return;
+        } else{
+            alert("RM do aluno não informado.");
+            window.location.href = "../assets/pages/painelProfessor.html";
+        }
     }
 
 
@@ -62,14 +68,20 @@ async function carregarAluno() {
 
 
 async function carregarDisciplinas() {
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const select = document.getElementById("codDisc");
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
 
     if (!rm) {
-        alert("RM do aluno não informado.");
-        window.location.href = "../assets/pages/adminPages/painelAdmin.html";
-        return;
+        if (!sessao || sessao.role !== "adm") {
+            alert("RM do aluno não informado.");
+            window.location.href = "../assets/pages/adminPages/painelAdmin.html";
+            return;
+        } else{
+            alert("RM do aluno não informado.");
+            window.location.href = "../assets/pages/painelProfessor.html";
+        }
     }
 
     try {
@@ -205,6 +217,7 @@ async function carregarTurmas() {
 
 
 async function totalPontos() {
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const select = document.getElementById("codDisc");
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
@@ -216,9 +229,15 @@ async function totalPontos() {
         return;
     }
     if (!rm) {
-        alert("RM do aluno não informado.");
-        window.location.href = "../assets/pages/adminPages/painelAdmin.html";
-        return;
+        if (!sessao || sessao.role !== "adm") {
+            alert("RM do aluno não informado.");
+            window.location.href = "../assets/pages/adminPages/painelAdmin.html";
+            return;
+        } else{
+            alert("RM do aluno não informado.");
+            window.location.href = "../assets/pages/painelProfessor.html";
+        }
+ 
     }
 
 
