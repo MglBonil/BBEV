@@ -140,10 +140,9 @@ async function cadPonto(event) {
     const novoPonto = {
         codAluno: Number(codAluno),
         codCat: Number(codCat),
-        codProf: Number(codProfessor),
         codDisciplina: Number(codDisc),
-        qtdPontos: Number(qtdPontos)
-        
+        qtdPontos: Number(qtdPontos),
+        ...(codProfessor && { codProf: Number(codProfessor) })
     };
 
 console.log("JSON que será enviado:", JSON.stringify(novoPonto));
