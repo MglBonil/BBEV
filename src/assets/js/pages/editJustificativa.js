@@ -1,4 +1,4 @@
-const VALID_TIPOS = ["A", "B", "i"];
+const VALID_TIPOS = ["Acrescimo", "Decrescimo"];
 
 function parseValor(valor) {
     if (!valor) return null;

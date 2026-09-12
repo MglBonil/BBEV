@@ -1,5 +1,5 @@
 
-const VALID_TIPOS = ["A", "B", "i"];
+const VALID_TIPOS = ["Acrescimo", "Decrescimo"];
 
 function parseValor(valor) {
     if (!valor) return null;
@@ -69,7 +69,7 @@ async function criarJustificativa(event) {
         }
 
         alert("Justificativa cadastrada com sucesso!");
-        window.location.href = "../pages/listJust.html";
+        window.location.href = "../listJust.html";
     } catch (error) {
         console.error(error);
         if (error instanceof TypeError) {
@@ -135,8 +135,8 @@ async function editarJustificativa(event) {
     const statusValue = statusRadio ? statusRadio.value === "true" : undefined;
 
     const justificativaAtualizada = {
-        descricaoCat: dados.descJust,
-        tipoCat: dados.tipoJust,
+        descricaoCat: dados.descricaoCat,
+        tipoCat: dados.tipoCat,
         valorPadraoCat: dados.valorNumber,
         ...(statusValue !== undefined && { statusCat: statusValue })
     };

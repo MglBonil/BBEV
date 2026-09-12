@@ -18,9 +18,9 @@ async function carregarJustificativas() {
             const option = document.createElement("option");
             option.value = categoria.idCat;
             option.dataset.valorPadraoCat = categoria.valorPadraoCat;
+            option.dataset.tipoCat = categoria.tipoCat;
             option.textContent = `${categoria.idCat} - ${categoria.descricaoCat}`;
             select.appendChild(option);
-            
         });
 
 
@@ -262,7 +262,16 @@ function atualizarValorPadrao() {
         return;
     }
 
-    input.value = opcaoSelecionada.dataset.valorPadraoCat || "";
+    let valor = Number(opcaoSelecionada.dataset.valorPadraoCat) || 0;
+    const tipo = opcaoSelecionada.dataset.tipoCat;
+
+    if (tipo === "Decrescimo") {
+        valor = -Math.abs(valor);
+    } else {
+        valor = Math.abs(valor);
+    }
+
+    input.value = valor;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
