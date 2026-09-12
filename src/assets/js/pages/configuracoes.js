@@ -39,6 +39,8 @@ async function editProf(event) {
     const rm = sessao?.rmProf;
     const emailProf = document.getElementById("emailProf").value.trim();
     const senhaProf = document.getElementById("novaSenha").value.trim();
+    const novaSenha = document.getElementById("novaSenha").value;
+    const confirmarSenha = document.getElementById("confirmarSenha").value;
 
     // Validações
 
@@ -57,6 +59,10 @@ async function editProf(event) {
         return;
     }
 
+    if (novaSenha && novaSenha !== confirmarSenha) {
+        alert("As senhas não coincidem.");
+        return;
+    }
     if (senhaProf !== "") {
 
         if (!/^(?=.*[$*&@#]).{8,32}$/.test(senhaProf)) {

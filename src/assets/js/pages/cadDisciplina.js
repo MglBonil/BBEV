@@ -67,8 +67,8 @@ async function cadDisciplina(event) {
         return;
     }
     
-    if (!/^[A-Za-zÀ-ÿ\s]+$/.test(nomeDisc)) {
-        alert("O nome não pode conter números ou caracteres especiais.");
+    if (!/^[A-Za-zÀ-ÿ0-9\s]+$/.test(nomeDisc)) {
+        alert("O nome não pode conter caracteres especiais.");
         return;
     }
 
