@@ -39,7 +39,7 @@ function toggleSenha() {
 }
 
 function validarEmail(email) {
-    return /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
+    return /^[\w-.]+@([\w-]+\.)+[a-zA-Z]{2,6}$/.test(email);
 }
 
 function setLoading(btnEntrar, ativo) {

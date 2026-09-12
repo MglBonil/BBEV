@@ -93,7 +93,7 @@ async function editAluno(event) {
         return;
     }
 
-    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailAluno)) {
+    if (!/^[\w-.]+@([\w-]+\.)+[a-zA-Z]{2,6}$/.test(emailAluno)) {
         alert("Email inválido!");
         return;
     }

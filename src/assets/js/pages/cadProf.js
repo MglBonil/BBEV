@@ -34,7 +34,7 @@ async function cadProf(event) {
     }
 
     //Validar formato do Email
-    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailProf)) {
+    if (!/^[\w-.]+@([\w-]+\.)+[a-zA-Z]{2,6}$/.test(emailProf)) {
         alert("Email inválido!");
         return;
     }

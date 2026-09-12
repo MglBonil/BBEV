@@ -18,6 +18,11 @@ async function cadTurma(event) {
         return;
     }
 
+    if (Number(anoTurma) > new Date().getFullYear()) {
+        alert("O ano não pode ser maior que o ano atual.");
+        return;
+    }
+
     if (grupoTurma.length > 1) {
         alert("O grupo deve ter no máximo 1 caractere.");
         return;

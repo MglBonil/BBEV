@@ -23,6 +23,11 @@ function validarIntervalos() {
         resultado[mencao] = valor;
     }
 
+    if (!(resultado.I <= resultado.R && resultado.R <= resultado.B && resultado.B <= resultado.MB)) {
+        alert("Os valores devem seguir a ordem: I ≤ R ≤ B ≤ MB.");
+        return null;
+    }
+
     return resultado;
 }
 

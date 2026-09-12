@@ -61,6 +61,11 @@ async function editTurma(event) {
         return;
     }
 
+    if (Number(anoTurma) > new Date().getFullYear()) {
+        alert("O ano não pode ser maior que o ano atual.");
+        return;
+    }
+
     if (!grupoTurma) {
         alert("Selecione o grupo.");
         return;

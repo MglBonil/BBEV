@@ -96,14 +96,15 @@ async function cadPonto(event) {
     const codCat = document.getElementById("codCat").value;
 
     const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
-    const codProfessor = sessao?.rmProf;
+    const ehAdm = sessao?.role === "adm";
+    const codProfessor = sessao?.rmProf || null;
 
     if (!qtdPontos || Number(qtdPontos) === 0) {
         alert("Informe uma quantia de pontos.");
         return;
     }
-    
-    if (!codProfessor) {
+
+    if (!ehAdm && !codProfessor) {
         alert("Selecione o professor responsável.");
         return;
     }

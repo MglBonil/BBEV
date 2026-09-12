@@ -61,7 +61,7 @@ async function editAdmin(event) {
         return;
     }
 
-    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailAdm)) {
+    if (!/^[\w-.]+@([\w-]+\.)+[a-zA-Z]{2,6}$/.test(emailAdm)) {
         alert("Email inválido!");
         return;
     }
