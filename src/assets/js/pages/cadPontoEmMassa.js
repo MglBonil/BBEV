@@ -61,7 +61,6 @@ async function cadPontoEmMassa(event) {
     const qtdPontos = document.getElementById("qtdPontos").value.trim();
     const codDisc = document.getElementById("codDisc").value;
     const codCat = document.getElementById("codCat").value;
-    const observacao = document.getElementById("observacao").value.trim();
 
     const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const ehAdm = sessao?.role === "adm";
@@ -74,11 +73,6 @@ async function cadPontoEmMassa(event) {
 
     if (!codCat) {
         alert("Selecione uma justificativa.");
-        return;
-    }
-
-    if (!observacao) {
-        alert("Informe uma observação.");
         return;
     }
 
@@ -96,7 +90,6 @@ async function cadPontoEmMassa(event) {
         codDisciplina: Number(codDisc),
         codCat: Number(codCat),
         qtdPontos: Number(qtdPontos),
-        observacao: observacao,
         ...(!ehAdm && codProfessor && { codProf: Number(codProfessor) })
     };
 
