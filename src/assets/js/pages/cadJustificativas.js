@@ -29,8 +29,8 @@ function validarJustificativa() {
     }
 
     const valorNumber = parseValor(valorPadraoCat);
-    if (valorNumber === null || valorNumber <= 0) {
-        alert("Informe um valor padrão válido maior que zero.");
+    if (valorNumber === null || valorNumber === 0) {
+        alert("Informe um valor padrão válido diferente de zero.");
         return null;
     }
 

@@ -19,6 +19,7 @@ async function carregarJustificativas() {
             option.value = categoria.idCat;
             option.dataset.valorPadraoCat = categoria.valorPadraoCat;
             option.dataset.tipoCat = categoria.tipoCat;
+            option.dataset.statusCat = categoria.statusCat;
             option.textContent = `${categoria.idCat} - ${categoria.descricaoCat}`;
             select.appendChild(option);
         });
@@ -105,6 +106,7 @@ async function cadPonto(event) {
     const codDisc = document.getElementById("codDisc").value;
     const codAluno = document.getElementById("rmAluno").textContent.trim();
     const codCat = document.getElementById("codCat").value;
+    const categoriaSelecionada = document.getElementById("codCat").selectedOptions[0];
 
     const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const ehAdm = sessao?.role === "adm";
@@ -135,7 +137,10 @@ async function cadPonto(event) {
         return;
     }
 
-    
+    if (categoriaSelecionada?.dataset.statusCat === "false") {
+        alert("A justificativa selecionada está inativa. Por favor, selecione uma justificativa ativa.");
+        return;
+    }
 
     const novoPonto = {
         codAluno: Number(codAluno),
