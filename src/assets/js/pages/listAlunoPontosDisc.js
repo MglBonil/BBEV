@@ -102,6 +102,14 @@ async function carregarAlunos() {
 
 window.onload = carregarAlunos;
 
+const params = new URLSearchParams(window.location.search);
+const idDiscBtn = params.get("idDisc");
+const codTurmaBtn = params.get("codTurma");
+
+document.getElementById("btnPontosEmMassa").addEventListener("click", () => {
+    window.location.href = `cadPontoEmMassa.html?idDisc=${idDiscBtn}&codTurma=${codTurmaBtn}`;
+});
+
 const search = document.getElementById("search");
 
 search.addEventListener("input", () => {

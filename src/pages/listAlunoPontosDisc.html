@@ -31,20 +31,29 @@
 
     <div class="w-full max-w-6xl bg-white rounded-2xl shadow-2xl p-6 sm:p-8 list-card">
 
-        <form class="mb-6">
-            <label for="search" class="sr-only">Pesquisar</label>
+        <div class="flex flex-col sm:flex-row gap-3 mb-6">
 
-            <div class="relative">
+            <form class="flex-1">
+                <label for="search" class="sr-only">Pesquisar</label>
 
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <img src="../assets/icons/search.svg">
+                <div class="relative">
+
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <img src="../assets/icons/search.svg">
+                    </div>
+
+                    <input type="search" id="search" placeholder="Pesquisar Aluno..." style="padding-left: 40px;"
+                        class="block w-full p-3 sm:p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+
                 </div>
+            </form>
 
-                <input type="search" id="search" placeholder="Pesquisar Aluno..." style="padding-left: 40px;"
-                    class="block w-full p-3 sm:p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+            <button id="btnPontosEmMassa"
+                class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md whitespace-nowrap">
+                Pontos em Massa
+            </button>
 
-            </div>
-        </form>
+        </div>
 
         <!-- Cabeçalho -->
         <div class="flex items-center justify-between mb-6 list-header">
