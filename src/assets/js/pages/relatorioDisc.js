@@ -20,6 +20,7 @@ async function carregarDisciplinas() {
     }
     if (!sessao) {
         grid.innerHTML = `<div class="col-span-full text-center text-red-600 py-10">Usuário não identificado.</div>`;
+        window.location.href = "../assets/pages/loginProf.html";
         return;
     }
 
