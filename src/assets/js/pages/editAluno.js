@@ -108,6 +108,26 @@ async function editAluno(event) {
         return;
     }
 
+    const hoje = new Date();
+    const nascimento = new Date(dataNascAluno);
+    if (isNaN(nascimento.getTime())) {
+        alert("Data de nascimento inválida.");
+        return;
+    }
+    if (nascimento > hoje) {
+        alert("A data de nascimento não pode ser no futuro.");
+        return;
+    }
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    const m = hoje.getMonth() - nascimento.getMonth();
+    if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+        idade--;
+    }
+    if (idade < 4 || idade > 120) {
+        alert("A idade do aluno deve ser entre 4 e 120 anos.");
+        return;
+    }
+
     if (!codTurma) {
         alert("Selecione a turma.");
         return;
