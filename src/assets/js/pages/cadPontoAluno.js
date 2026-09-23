@@ -31,7 +31,7 @@ async function carregarJustificativas() {
 }
 
 
-let codTurma; // variável no escopo externo
+let codTurma = null; // variável no escopo externo
 
 async function carregarAluno() {
     const params = new URLSearchParams(window.location.search);
@@ -259,11 +259,10 @@ function atualizarValorPadrao() {
     input.value = valor;
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    carregarJustificativas(); // independente, pode rodar em paralelo
-
-    await carregarAluno();       // precisa terminar primeiro, pois define codTurma
-    await carregarDisciplinas(); // só roda depois que codTurma já foi preenchido
+document.addEventListener("DOMContentLoaded", () => {
+    carregarJustificativas();  
+    carregarAluno();
+    carregarDisciplinas();
 
     document.getElementById("codCat").addEventListener("change", atualizarValorPadrao);
     document.getElementById("codDisc").addEventListener("change", totalPontos);
