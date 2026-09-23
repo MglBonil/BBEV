@@ -84,7 +84,7 @@ async function carregarDisciplinas() {
 
     const url = ehAdm
         ? `${API}/disciplina/turma/${codTurma}`
-        : `${API}/professor/${codProfessor}/turma/${codTurma}`;
+        : `${API}/disciplina/professor/${codProfessor}/turma/${codTurma}`;
 
     alert(url);
 
