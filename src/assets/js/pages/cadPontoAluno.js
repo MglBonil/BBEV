@@ -24,26 +24,24 @@ async function carregarJustificativas() {
             select.appendChild(option);
         });
 
-
     } catch (erro) {
         console.error(erro);
         select.innerHTML = `<option value="">Erro ao carregar justificativase</option>`;
     }
 }
 
-let codTurma = null;
+
+let codTurma; // variável no escopo externo
 
 async function carregarAluno() {
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
 
     if (!rm) {
-            alert("RM do aluno não informado.");
-            window.location.href = "../pages/loginProf.html";
-            return;
-
+        alert("RM do aluno não informado.");
+        window.location.href = "../pages/loginProf.html";
+        return;
     }
-
 
     try {
         const response = await fetch(`${API}/aluno/${rm}`);
@@ -54,7 +52,7 @@ async function carregarAluno() {
 
         const aluno = await response.json();
 
-        codTurma = aluno.codTurma;
+        codTurma = aluno.codTurma; // atribui à variável externa
         document.getElementById("rmAluno").textContent = aluno.rmAluno;
         document.getElementById("nomeAluno").textContent = aluno.nomeAluno ?? "";
 
@@ -65,12 +63,10 @@ async function carregarAluno() {
 }
 
 
-
 async function carregarDisciplinas() {
     const select = document.getElementById("codDisc");
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
-
 
     const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const ehAdm = sessao?.role === "adm";
@@ -167,7 +163,7 @@ async function cadPonto(event) {
         ...(codProfessor && { codProf: Number(codProfessor) })
     };
 
-console.log("JSON que será enviado:", JSON.stringify(novoPonto));
+    console.log("JSON que será enviado:", JSON.stringify(novoPonto));
 
     try {
         const response = await fetch(`${API}/pontos`, {
@@ -204,18 +200,15 @@ async function totalPontos() {
     const rm = params.get("rm");
     const idDisc = select.value;
 
-
     if (!idDisc) {
         document.getElementById("totalPontos").textContent = "0";
         return;
     }
     if (!rm) {
-            alert("RM do aluno não informado.");
-            window.location.href = "../pages/loginProf.html";
-            return;
-        }
-    
-
+        alert("RM do aluno não informado.");
+        window.location.href = "../pages/loginProf.html";
+        return;
+    }
 
     try {
         const response = await fetch(`${API}/pontos/aluno/${rm}/disciplina/${idDisc}/total`);
@@ -266,10 +259,11 @@ function atualizarValorPadrao() {
     input.value = valor;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    carregarJustificativas();  
-    carregarAluno();
-    carregarDisciplinas();
+document.addEventListener("DOMContentLoaded", async () => {
+    carregarJustificativas(); // independente, pode rodar em paralelo
+
+    await carregarAluno();       // precisa terminar primeiro, pois define codTurma
+    await carregarDisciplinas(); // só roda depois que codTurma já foi preenchido
 
     document.getElementById("codCat").addEventListener("change", atualizarValorPadrao);
     document.getElementById("codDisc").addEventListener("change", totalPontos);
