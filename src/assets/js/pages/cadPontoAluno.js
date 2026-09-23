@@ -2,7 +2,7 @@ async function carregarJustificativas() {
     const select = document.getElementById("codCat");
 
     try {
-        const response = await fetch(`${API}/categoria/ativa?page=0&size=100`, {
+        const response = await fetch(`${API}/categoria/ativas?page=0&size=100`, {
             method: "GET",
             headers: { "Accept": "application/json" }
         });
@@ -67,30 +67,44 @@ async function carregarDisciplinas() {
     const select = document.getElementById("codDisc");
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
+    const codTurma = params.get("codTurma");
 
-    if (!rm) {
-            alert("RM do aluno não informado.");
-            window.location.href = "../pages/loginProf.html";
-            return;
+    const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
+    const ehAdm = sessao?.role === "adm";
+    const codProfessor = sessao?.rmProf;
+
+    if (!rm || !codTurma) {
+        alert("Parâmetros insuficientes (rm ou codTurma).");
+        window.location.href = "../pages/loginProf.html";
+        return;
     }
 
+    const url = ehAdm
+        ? `${API}/disciplina/turma/${codTurma}`
+        : `${API}/professor/${codProfessor}/turma/${codTurma}`;
+
     try {
-        const response = await fetch(`${API}/disciplina/aluno/${rm}`, {
+        const response = await fetch(url, {
             method: "GET",
             headers: { "Accept": "application/json" }
         });
 
-        if (!response.ok) {
-            throw new Error("Erro HTTP: " + response.status);
-        }
+        if (!response.ok) throw new Error("Erro HTTP: " + response.status);
 
         const disciplinas = await response.json();
 
-        disciplinas.forEach(disciplina => {
-            const option = document.createElement("option");
-            option.value = disciplina.idDisc;
-            option.textContent = `${disciplina.idDisc} - ${disciplina.nomeDisc}`;
-            select.appendChild(option);
+        select.innerHTML = '<option value="" disabled selected>Selecione a disciplina</option>';
+
+        if (disciplinas.length === 0) {
+            select.innerHTML += '<option value="" disabled>Nenhuma disciplina encontrada</option>';
+            return;
+        }
+
+        disciplinas.forEach(d => {
+            const opt = document.createElement("option");
+            opt.value = d.idDisc;
+            opt.textContent = `${d.idDisc} - ${d.nomeDisc}`;
+            select.appendChild(opt);
         });
 
     } catch (erro) {
@@ -180,35 +194,6 @@ console.log("JSON que será enviado:", JSON.stringify(novoPonto));
         alert(error.message || "Erro ao cadastrar ponto.");
     }
 }
-
-async function carregarTurmas() {
-
-    try {
-        const response = await fetch(`${API}/turma/all?page=0&size=100`, {
-            method: "GET",
-            headers: { "Accept": "application/json" }
-        });
-
-        if (!response.ok) {
-            throw new Error("Erro HTTP: " + response.status);
-        }
-
-        const pagina = await response.json();
-        const turmas = pagina.content || [];
-
-        turmas.forEach(turma => {
-            const option = document.createElement("option");
-            option.value = turma.idTurma;
-            option.textContent = `${turma.idTurma} - ${turma.nomeTurma}`;
-            select.appendChild(option);
-        });
-
-    } catch (erro) {
-        console.error(erro);
-        select.innerHTML = `<option value="">Erro ao carregar turmas</option>`;
-    }
-}
-
 
 async function totalPontos() {
     const select = document.getElementById("codDisc");
