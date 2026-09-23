@@ -86,7 +86,7 @@ async function carregarDisciplinas() {
         ? `${API}/disciplina/turma/${codTurma}`
         : `${API}/disciplina/professor/${codProfessor}/turma/${codTurma}`;
 
-    alert(url);
+
 
     try {
         const response = await fetch(url, {
