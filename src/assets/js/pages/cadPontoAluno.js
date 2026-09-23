@@ -56,6 +56,8 @@ async function carregarAluno() {
         document.getElementById("rmAluno").textContent = aluno.rmAluno;
         document.getElementById("nomeAluno").textContent = aluno.nomeAluno ?? "";
 
+        carregarDisciplinas(); // garante que codTurma já existe antes de carregar disciplinas
+
     } catch (error) {
         console.error(error);
         alert(error.message || "Erro ao carregar aluno.");
@@ -261,8 +263,7 @@ function atualizarValorPadrao() {
 
 document.addEventListener("DOMContentLoaded", () => {
     carregarJustificativas();  
-    carregarAluno();
-    carregarDisciplinas();
+    carregarAluno(); // carrega aluno e depois chama carregarDisciplinas internamente
 
     document.getElementById("codCat").addEventListener("change", atualizarValorPadrao);
     document.getElementById("codDisc").addEventListener("change", totalPontos);
