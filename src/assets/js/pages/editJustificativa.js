@@ -139,7 +139,7 @@ async function excluirJustificativa(event) {
     }
 
     const confirmado = prompt(
-        "Tem certeza que deseja excluir esta justificativa? Digite 'CONFIRMAR' para confirmar."
+        "Tem certeza que deseja excluir esta justificativa? Digite 'CONFIRMAR' para confirmar. (Todos os pontos que utilizam esta Justificativa serão excluidos, caso não queira fazer isso inative ela)"
     );
 
     if (!confirmado || confirmado.toUpperCase() !== "CONFIRMAR") {
