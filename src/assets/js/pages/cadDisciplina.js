@@ -2,7 +2,7 @@ async function carregarProfessores() {
     const select = document.getElementById("codProfessor");
 
     try {
-        const response = await fetch(`${API}/professor/all?page=0&size=100`, {
+        const response = await fetch(`${API}/professor/ativos?page=0&size=100`, {
             method: "GET",
             headers: { "Accept": "application/json" }
         });

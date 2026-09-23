@@ -2,7 +2,7 @@ async function carregarJustificativas() {
     const select = document.getElementById("codCat");
 
     try {
-        const response = await fetch(`${API}/categoria/all?page=0&size=100`, {
+        const response = await fetch(`${API}/categoria/ativa?page=0&size=100`, {
             method: "GET",
             headers: { "Accept": "application/json" }
         });
