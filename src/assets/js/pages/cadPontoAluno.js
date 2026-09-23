@@ -31,6 +31,8 @@ async function carregarJustificativas() {
     }
 }
 
+let codTurma = null;
+
 async function carregarAluno() {
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
@@ -52,6 +54,7 @@ async function carregarAluno() {
 
         const aluno = await response.json();
 
+        codTurma = aluno.codTurma;
         document.getElementById("rmAluno").textContent = aluno.rmAluno;
         document.getElementById("nomeAluno").textContent = aluno.nomeAluno ?? "";
 
@@ -67,7 +70,7 @@ async function carregarDisciplinas() {
     const select = document.getElementById("codDisc");
     const params = new URLSearchParams(window.location.search);
     const rm = params.get("rm");
-    const codTurma = params.get("codTurma");
+
 
     const sessao = JSON.parse(sessionStorage.getItem("sessaoBBEV"));
     const ehAdm = sessao?.role === "adm";
