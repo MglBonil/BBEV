@@ -80,9 +80,13 @@ async function carregarDisciplinas() {
         return;
     }
 
+
+
     const url = ehAdm
         ? `${API}/disciplina/turma/${codTurma}`
         : `${API}/professor/${codProfessor}/turma/${codTurma}`;
+
+    alert(url);
 
     try {
         const response = await fetch(url, {
